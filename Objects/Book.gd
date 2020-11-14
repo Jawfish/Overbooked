@@ -1,4 +1,4 @@
-extends Node
+extends RigidBody2D
 class_name Book
 enum BOOK_COLORS {RED, ORANGE, GREEN, BLUE}
 
