@@ -14,21 +14,32 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Actor.gd"
 }, {
+"base": "Node2D",
+"class": "GameObject",
+"language": "GDScript",
+"path": "res://Objects/Object.gd"
+}, {
 "base": "Actor",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Actors/Player.gd"
+}, {
+"base": "Node2D",
+"class": "ShelfObject",
+"language": "GDScript",
+"path": "res://Objects/ShelfObject.gd"
 } ]
 _global_script_class_icons={
 "Actor": "",
-"Player": ""
+"GameObject": "",
+"Player": "",
+"ShelfObject": ""
 }
 
 [application]
 
 config/name="Overbooked"
 run/main_scene="res://Engine/Main.tscn"
-config/icon="res://icon.png"
 
 [display]
 
@@ -73,7 +84,3 @@ interact={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
