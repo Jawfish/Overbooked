@@ -1,7 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Player.gd" type="Script" id=2]
+[ext_resource path="res://Actors/Interactor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Objects/HighlightMaterial.tres" type="Material" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 48 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 48 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 22, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 22, 16 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 21.2969
@@ -13,3 +27,29 @@ movement_speed = 150
 
 [node name="Collider" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="Interactor" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 1.5749, -15.6543 )
+highlightMaterial = ExtResource( 4 )
+
+[node name="Left" type="CollisionShape2D" parent="Interactor" index="0"]
+position = Vector2( -40.7835, 1.26133 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Right" type="CollisionShape2D" parent="Interactor" index="1"]
+position = Vector2( 40.7835, -1.52588e-05 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Down" type="CollisionShape2D" parent="Interactor" index="2"]
+position = Vector2( 4.57764e-05, 65.5899 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Up" type="CollisionShape2D" parent="Interactor" index="3"]
+position = Vector2( -0.420425, -65.1695 )
+shape = SubResource( 4 )
+disabled = true
+
+[editable path="Interactor"]
