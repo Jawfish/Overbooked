@@ -7,6 +7,9 @@ export(PackedScene) var dropbox_object: PackedScene
 
 
 func _ready() -> void:
+	spawn_objects()
+	
+func spawn_objects() -> void:
 	# replace tiles with objects
 	for tile in get_used_cells():
 		var tile_name: String = tile_set.tile_get_name(get_cellv(tile))
@@ -37,6 +40,7 @@ func _ready() -> void:
 			# scenes spawn at the top left of a tile's position, so it  needs to be offset
 			instance.position = map_to_world(tile) + Vector2(32, 32)
 			add_child(instance)
+			# remove the placeholder tile
 			set_cellv(tile, -1)
 			# if the scene is a shelf, color-code it accordingly
 			if modulate_object:

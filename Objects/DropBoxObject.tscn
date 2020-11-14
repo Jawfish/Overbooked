@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Object.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tiles/DropBoxTile.png" type="Texture" id=2]
+[ext_resource path="res://Objects/DropBoxObject.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
 [node name="DropBoxObject" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

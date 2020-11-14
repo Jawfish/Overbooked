@@ -26,5 +26,6 @@ func _physics_process(delta):
 	
 	# move
 	# TODO: acceleration and deceleration
-	var movement = movement_speed * direction * delta
-	move_and_collide(movement)
+	var movement = movement_speed * direction
+	# uses delta time automatically
+	move_and_slide(movement)
