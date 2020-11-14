@@ -5,6 +5,9 @@ enum STATES {IDLE, MOVING, INTERACTING}
 
 var current_state: int = STATES.IDLE
 
+func _ready() -> void:
+	Globals.player = self
+
 func _physics_process(delta):
 	# get input action strength
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")

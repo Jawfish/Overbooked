@@ -11,7 +11,7 @@ func _enter_tree() -> void:
 	actor = get_parent()
 
 func _input(event):
-	if event.is_action_pressed("ui_select"):
+	if event.is_action_pressed("interact"):
 		if heldItem and not target:
 			# drop
 			var map = get_node("/root/Main")
@@ -35,12 +35,12 @@ func _input(event):
 
 func _on_body_entered(body: PhysicsBody2D):
 	#highlight_object(body)
-	print("body in interactor")
+	print(body.name + " entered interactor")
 	target = body
 
 func _on_body_exited(body: PhysicsBody2D):
 	#unhighlight_object(body)
-	print("body left")
+	print(body.name + " left interactor")
 	var still_overlapping = self.get_overlapping_bodies()
 	target = still_overlapping[0] if len(still_overlapping) > 0 else null
 

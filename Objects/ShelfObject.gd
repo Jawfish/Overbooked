@@ -19,3 +19,5 @@ func set_color(color: String) -> void:
 		"blue":
 			modulate = Color(0.5, 0.5, 1.0, 1.0)
 			shelf_color = SHELF_COLORS.BLUE
+	name = color.capitalize() + "ShelfObject"
+	print(name)

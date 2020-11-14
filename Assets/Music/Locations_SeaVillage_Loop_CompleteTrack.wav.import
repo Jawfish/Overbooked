@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Locations_SeaVillage_Loop_CompleteTrack.wav-2d0ce9c25bb3965e3f8b56de0819fa7f.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Locations_SeaVillage_Loop_CompleteTrack.wav"
+dest_files=[ "res://.import/Locations_SeaVillage_Loop_CompleteTrack.wav-2d0ce9c25bb3965e3f8b56de0819fa7f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

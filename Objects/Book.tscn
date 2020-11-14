@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Objects/book.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Book.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 20 )
@@ -8,6 +9,7 @@ extents = Vector2( 16, 20 )
 [node name="Book" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 2147483650
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
