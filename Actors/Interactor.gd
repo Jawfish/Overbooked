@@ -17,13 +17,17 @@ func _input(event):
 			var map = get_node("/root/Main")
 			map.add_child(heldItem)
 			
-			var pos: Vector2 = actor.global_position
+			var pos: Vector2 = actor.global_position + Vector2(64, 0)
 			# round pos to tile pos
-			pos = Vector2(round(pos.x / TILE_SIZE) * TILE_SIZE, round(pos.y / TILE_SIZE) * TILE_SIZE)
+			pos = Vector2(round((pos.x - TILE_SIZE / 2) / TILE_SIZE) * TILE_SIZE,
+						  round((pos.y - TILE_SIZE / 2) / TILE_SIZE) * TILE_SIZE)
 			# offset to center
 			pos += Vector2(TILE_SIZE / 2, TILE_SIZE / 2)
 			
 			heldItem.global_position = pos
+			heldItem.rotation = 0
+			(heldItem as RigidBody2D).sleeping = false
+			(heldItem as RigidBody2D).velocity = Vector2.ZERO
 			heldItem = null
 		elif not heldItem and target:
 			# pick up

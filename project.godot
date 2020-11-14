@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Objects/CartObject.gd"
 }, {
+"base": "Node2D",
+"class": "ConveyorObject",
+"language": "GDScript",
+"path": "res://Objects/ConveyorObject.gd"
+}, {
 "base": "GameObject",
 "class": "DeskObject",
 "language": "GDScript",
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "Actor": "",
 "Book": "",
 "CartObject": "",
+"ConveyorObject": "",
 "DeskObject": "",
 "DropBoxObject": "",
 "GameObject": "",

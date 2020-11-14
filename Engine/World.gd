@@ -4,7 +4,7 @@ export(PackedScene) var wall_object: PackedScene
 export(PackedScene) var desk_object: PackedScene
 export(PackedScene) var shelf_object: PackedScene
 export(PackedScene) var dropbox_object: PackedScene
-
+export(PackedScene) var conveyor_object: PackedScene
 
 func _ready() -> void:
 	spawn_objects()
@@ -35,10 +35,15 @@ func spawn_objects() -> void:
 				modulate_object = "Blue"				
 			"DropBoxTile":
 				scene_to_place = dropbox_object
+			"ConveyorTile":
+				scene_to_place = conveyor_object
 		if scene_to_place != null:
-			var instance = scene_to_place.instance()
+			var instance = scene_to_place.instance() as Node2D
 			# scenes spawn at the top left of a tile's position, so it  needs to be offset
 			instance.position = map_to_world(tile) + Vector2(32, 32)
+			instance.rotation_degrees = -90.0 if self.is_cell_transposed(tile.x, tile.y) else 0.0
+			instance.scale = Vector2(-1.0 if self.is_cell_x_flipped(tile.x, tile.y) else 1.0,
+									 -1.0 if self.is_cell_y_flipped(tile.x, tile.y) else 1.0)
 			add_child(instance)
 			# remove the placeholder tile
 			set_cellv(tile, -1)
