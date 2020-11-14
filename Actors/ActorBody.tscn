@@ -307,6 +307,116 @@ tracks/15/keys = {
 }
 
 [sub_resource type="Animation" id=2]
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyParts/LeftLeg/LeftLegSprite:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyParts/RightLeg/RightLegSprite:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyParts/Body:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, 0 ), Vector2( 0, 10 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyParts/Head:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -120 ), Vector2( 0, -110 ), Vector2( 0, -120 ), Vector2( 0, -110 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyParts/LeftHand:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, 0 ), Vector2( 0, 10 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyParts/RightHand:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, 0 ), Vector2( 0, 10 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BodyParts/LeftHand/LeftHandSprite:rotation_degrees")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("BodyParts/RightHand/RightHandSprite:rotation_degrees")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BodyParts/Head/HeadSprite:rotation_degrees")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0, 0.0, 5.0 ]
+}
 
 [node name="ActorBody" type="Node2D"]
 script = ExtResource( 1 )
@@ -320,10 +430,11 @@ anims/Walk = SubResource( 2 )
 [node name="BodyParts" type="Node2D" parent="."]
 
 [node name="LeftHand" type="Node2D" parent="BodyParts"]
+position = Vector2( 0, 0.0576341 )
 
 [node name="LeftHandSprite" type="Sprite" parent="BodyParts/LeftHand"]
 position = Vector2( 72.1322, -48.9092 )
-rotation = 0.523598
+rotation = 0.257463
 texture = ExtResource( 4 )
 offset = Vector2( 49.3177, 65.2949 )
 
@@ -332,6 +443,7 @@ position = Vector2( 32, 124 )
 
 [node name="LeftLegSprite" type="Sprite" parent="BodyParts/LeftLeg"]
 position = Vector2( 21.0503, -21.3768 )
+rotation = 0.00867285
 texture = ExtResource( 2 )
 offset = Vector2( -1.26422, 42.262 )
 
@@ -340,27 +452,31 @@ position = Vector2( -32, 124 )
 
 [node name="RightLegSprite" type="Sprite" parent="BodyParts/RightLeg"]
 position = Vector2( -2.50183, -20.2545 )
+rotation = -0.00867285
 texture = ExtResource( 2 )
 offset = Vector2( -2.58932, 42.0695 )
 
 [node name="Body" type="Node2D" parent="BodyParts"]
+position = Vector2( 0, 0.0576341 )
 
 [node name="BodySprite" type="Sprite" parent="BodyParts/Body"]
 position = Vector2( -0.906495, -14.6153 )
 texture = ExtResource( 3 )
 
 [node name="Head" type="Node2D" parent="BodyParts"]
-position = Vector2( 0, -120 )
+position = Vector2( 0, -119.942 )
 
 [node name="HeadSprite" type="Sprite" parent="BodyParts/Head"]
 position = Vector2( 39.5807, 35.172 )
+rotation = 0.000502953
 texture = ExtResource( 5 )
 offset = Vector2( -33.8996, -190.949 )
 
 [node name="RightHand" type="Node2D" parent="BodyParts"]
+position = Vector2( 0, 0.0576341 )
 
 [node name="RightHandSprite" type="Sprite" parent="BodyParts/RightHand"]
 position = Vector2( -77.1553, -64.6236 )
-rotation = 0.523598
+rotation = 0.266136
 texture = ExtResource( 6 )
 offset = Vector2( 46.9349, 87.4871 )
