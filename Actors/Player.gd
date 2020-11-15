@@ -1,12 +1,14 @@
 extends Actor
 class_name Player
 
-enum STATES {IDLE, MOVING, INTERACTING}
+enum STATES { IDLE, MOVING, INTERACTING }
 
 var current_state: int = STATES.IDLE
 
+
 func _ready() -> void:
 	Globals.player = self
+
 
 func _physics_process(delta):
 	# get input action strength
@@ -15,12 +17,12 @@ func _physics_process(delta):
 
 	# normalize it
 	direction = direction.normalized()
-	
+
 	# emit current player state as a signal so other things can know
 	# these are defined in the parent (Actor) class
 	if direction != Vector2.ZERO:
 		_on_direction_changed(direction)
-		if not current_state == STATES.MOVING:		
+		if not current_state == STATES.MOVING:
 			current_state = STATES.MOVING
 			emit_signal("moving")
 	elif direction == Vector2.ZERO:
@@ -44,6 +46,6 @@ func _on_direction_changed(input_dir: Vector2):
 		Vector2(0, 1): $Interactor/Down
 	}
 	for dir in dirs:
-		var active = (abs(input_dir.angle_to(dir)) <= deg2rad(45.00001))
+		var active = abs(input_dir.angle_to(dir)) <= deg2rad(45.00001)
 		#print(str(dir) + ": " + str(abs(rad2deg(input_dir.angle_to(dir)))) + " " + str(active))
-		dirs[dir].disabled = !active
+		dirs[dir].disabled = ! active

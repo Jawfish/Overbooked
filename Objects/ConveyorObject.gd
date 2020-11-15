@@ -3,6 +3,7 @@ class_name ConveyorObject
 
 var speed: float = 150.0
 
+
 func _physics_process(delta):
 	var target_vel = self.transform.basis_xform(Vector2(1.0, 0.0)) * speed
 	for body in $Area2D.get_overlapping_bodies():
