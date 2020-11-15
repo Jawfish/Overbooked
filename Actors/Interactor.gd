@@ -13,8 +13,8 @@ func _enter_tree() -> void:
 
 
 func _input(event):
-	print(target)
 	if event.is_action_pressed("interact"):
+		target = find_target()
 		if heldItem and not target:
 			drop_held_item()
 		elif not heldItem and target as Book:
@@ -55,23 +55,18 @@ func swap_item(new_item: Book) -> void:
 
 func _on_body_entered(body: PhysicsBody2D):
 	#highlight_object(body)
-	if body.name == "Book":
-		print(body.name + " entered interactor")
-	target = body
+	print(body.name + " entered interactor")
 
 
 func _on_body_exited(body: PhysicsBody2D):
 	#unhighlight_object(body)
-	if body.name == "Book":
-		print(body.name + " left interactor")
-	var still_overlapping = self.get_overlapping_bodies()
-	var book_in_range: bool = false
-	for body in still_overlapping:
+	print(body.name + " left interactor")
+
+func find_target() -> Book:
+	for body in get_overlapping_bodies():
 		if body as Book:
-			target = body
-			book_in_range = true
-	if not book_in_range:
-		target = null
+			return body
+	return null
 
 
 # these don't quite work yet
