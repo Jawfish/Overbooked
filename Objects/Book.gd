@@ -5,7 +5,7 @@ enum BOOK_COLORS {RED, ORANGE, GREEN, BLUE}
 var book_color: int
 
 func _init() -> void:
-	book_color = randi() % BOOK_COLORS.size() + 1
+	book_color = randi() % BOOK_COLORS.size()
 	
 func _ready() -> void:
 	match book_color:

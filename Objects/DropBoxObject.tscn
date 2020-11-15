@@ -73,9 +73,14 @@ resource_name = "Stash"
 
 [node name="DropBoxObject" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-min_time = 7.0
-max_time = 20.0
-book_scene = ExtResource( 6 )
+_min_time = 0.1
+_max_time = 0.2
+_book_scene = ExtResource( 6 )
+_red = Color( 0.941176, 0.188235, 0.188235, 1 )
+_orange = Color( 0.941176, 0.658824, 0.176471, 1 )
+_green = Color( 0.317647, 0.984314, 0.262745, 1 )
+_blue = Color( 0.172549, 0.733333, 0.929412, 1 )
+_max_books = 8
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
