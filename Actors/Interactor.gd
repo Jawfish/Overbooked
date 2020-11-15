@@ -29,13 +29,14 @@ func _input(event):
 			(heldItem as RigidBody2D).sleeping = false
 #			(heldItem as RigidBody2D).velocity = Vector2.ZERO
 			heldItem = null
-		elif not heldItem and target:
+		elif not heldItem and target as Book:
 			# pick up
 			target.get_parent().remove_child(target)  # unlink from scene tree
 			heldItem = target
 			target = null
 		elif heldItem and target:
 			pass  # swap?
+		
 
 func _on_body_entered(body: PhysicsBody2D):
 	#highlight_object(body)
