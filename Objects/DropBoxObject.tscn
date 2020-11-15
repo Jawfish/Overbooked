@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -96 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -70 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ExclamationMark:scale")
@@ -54,7 +54,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
-length = 6.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("ExclamationMark:position")
@@ -63,10 +62,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -100 ), Vector2( 0, -92 ), Vector2( 0, -100 ), Vector2( 0, -92 ), Vector2( 0, -100 ), Vector2( 0, -92 ), Vector2( 0, -100 ), Vector2( 0, -92 ), Vector2( 0, -100 ), Vector2( 0, -92 ), Vector2( 0, -100 ), Vector2( 0, -92 ) ]
+"values": [ Vector2( 0, -64 ), Vector2( 0, -70 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -92,6 +91,7 @@ shape = SubResource( 1 )
 stream = ExtResource( 4 )
 
 [node name="ExclamationMark" type="Sprite" parent="." index="4"]
+modulate = Color( 1, 0.960784, 0, 1 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 5 )
 
@@ -99,5 +99,23 @@ texture = ExtResource( 5 )
 anims/Exclaim = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Stash = SubResource( 4 )
+
+[node name="Pips" type="Node2D" parent="." index="6"]
+z_index = 4
+
+[node name="GridContainer" type="GridContainer" parent="Pips" index="0"]
+margin_left = -31.0
+margin_top = 32.0
+margin_right = 33.0
+margin_bottom = 100.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/hseparation = 2
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
