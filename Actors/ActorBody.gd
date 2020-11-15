@@ -2,12 +2,8 @@ extends Node2D
 
 export (Texture) var head_texture: Texture = preload("res://Assets/Characters/Monkey/Head01.png")
 export (Texture) var body_texture: Texture = preload("res://Assets/Characters/Monkey/Torso.png")
-export (Texture) var left_hand_texture: Texture = preload(
-	"res://Assets/Characters/Monkey/HandL.png"
-)
-export (Texture) var right_hand_texture: Texture = preload(
-	"res://Assets/Characters/Monkey/HandR.png"
-)
+export (Texture) var left_hand_texture: Texture = preload("res://Assets/Characters/Monkey/HandL.png")
+export (Texture) var right_hand_texture: Texture = preload("res://Assets/Characters/Monkey/HandR.png")
 export (Texture) var leg_texture: Texture = preload("res://Assets/Characters/Monkey/Leg.png")
 
 var actor: Actor
