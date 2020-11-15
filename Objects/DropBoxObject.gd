@@ -26,6 +26,7 @@ func generate_new_book() -> void:
 	add_book_pip(book)
 	_books.append(book)
 	
+# add a visual representation of how many books remain in the dropbox
 func add_book_pip(book: Book) -> void:
 	var pip = Rect2(position + Vector2(0, 32), Vector2.ONE * 10)
 	var color: Color
