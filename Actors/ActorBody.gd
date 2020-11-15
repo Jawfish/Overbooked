@@ -13,7 +13,7 @@ onready var scale_x = scale.x
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		$AnimationPlayer.play("Interact")
+		$AnimationTree.set("parameters/interact/active", true)
 
 
 func _enter_tree() -> void:
