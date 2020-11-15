@@ -65,7 +65,13 @@ func _on_body_exited(body: PhysicsBody2D):
 	if body.name == "Book":
 		print(body.name + " left interactor")
 	var still_overlapping = self.get_overlapping_bodies()
-	target = still_overlapping[0] if len(still_overlapping) > 0 else null
+	var book_in_range: bool = false
+	for body in still_overlapping:
+		if body as Book:
+			target = body
+			book_in_range = true
+	if not book_in_range:
+		target = null
 
 
 # these don't quite work yet

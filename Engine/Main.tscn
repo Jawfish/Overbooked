@@ -16,5 +16,4 @@ modulate = Color( 0.0156863, 0.701961, 1, 1 )
 position = Vector2( 715.989, 536.772 )
 
 [node name="Book2" parent="." instance=ExtResource( 3 )]
-modulate = Color( 1, 0.141176, 0.141176, 1 )
 position = Vector2( 742.989, 495.772 )
