@@ -5,6 +5,8 @@ enum STATES { IDLE, MOVING, INTERACTING }
 
 var current_state: int = STATES.IDLE
 
+onready var interactor: Interactor = $Interactor
+
 
 func _ready() -> void:
 	Globals.player = self

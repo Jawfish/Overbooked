@@ -1,11 +1,13 @@
 extends Area2D
+class_name Interactor
 
 export var highlightMaterial: Material
 
 var TILE_SIZE: float = 64.0
 var actor: Actor
-var heldItem: Node2D
+var held_item: Book
 var target: PhysicsBody2D
+var thrown_item: Book
 
 
 func _enter_tree() -> void:
@@ -14,59 +16,58 @@ func _enter_tree() -> void:
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		if heldItem and not target:
+		if held_item:
 			drop_held_item()
-		elif not heldItem and target as Book:
-			pick_up_item(target)
-		elif heldItem and target as Book:
-			swap_item(target)
 
 
 func drop_held_item() -> void:
 	var map = get_node("/root/Main")
-	map.add_child(heldItem)
-
-	var pos: Vector2 = actor.global_position + Vector2(64, 0)
-	# round pos to tile pos
-	pos = Vector2(
-		round((pos.x - TILE_SIZE / 2) / TILE_SIZE) * TILE_SIZE,
-		round((pos.y - TILE_SIZE / 2) / TILE_SIZE) * TILE_SIZE
-	)
-	# offset to center
-	pos += Vector2(TILE_SIZE / 2, TILE_SIZE / 2)
-
-	heldItem.global_position = pos
-	heldItem.rotation = 0
-	(heldItem as RigidBody2D).sleeping = false
-	heldItem = null
+	map.add_child(held_item)
+	var pos: Vector2
+	# cheeky way to get the direction the player is facing by checking which interactor is active
+	for interactor in get_children():
+		if not interactor as Timer and not interactor.disabled:
+			pos = interactor.global_position
+	held_item.global_position = pos
+	held_item.rotation = 0
+	# the center of the player; actor.global_position doesn't work due to offsets relative to the interactor
+	var center = find_node("Center").global_position
+	var vel = held_item.transform.basis_xform(pos - find_node("Center").global_position) * 25
+	var force = vel - held_item.linear_velocity
+	(held_item as RigidBody2D).apply_central_impulse(force)
+	(held_item as RigidBody2D).sleeping = false
+	thrown_item = held_item
+	held_item = null
 
 
 func pick_up_item(item_to_pick_up: Book) -> void:
+	if item_to_pick_up == thrown_item:
+		return
 	target.get_parent().remove_child(target)  # unlink from scene tree
-	heldItem = target
+	held_item = target
 	target = null
-
-
-func swap_item(new_item: Book) -> void:
-	drop_held_item()
-	pick_up_item(new_item)
 
 
 func _on_body_entered(body: PhysicsBody2D):
 	#highlight_object(body)
-	print(body.name + " entered interactor")
+#	print(body.name + " entered interactor")
 	target = body
+	if not held_item and target as Book:
+		pick_up_item(target)
 
 
 func _on_body_exited(body: PhysicsBody2D):
 	#unhighlight_object(body)
-	print(body.name + " left interactor")
+#	print(body.name + " left interactor")
+	if body == thrown_item:
+		thrown_item = null
 	if get_overlapping_bodies().size() == 0:
 		target = null
 	else:
 		for body in get_overlapping_bodies():
 			if body as Book:
 				target = body
+
 
 func find_target() -> Book:
 	for body in get_overlapping_bodies():

@@ -1,19 +1,18 @@
 extends Node2D
 
-export (Texture) var head_texture: Texture = preload("res://Assets/Characters/Monkey/Head01.png")
-export (Texture) var body_texture: Texture = preload("res://Assets/Characters/Monkey/Torso.png")
-export (Texture) var left_hand_texture: Texture = preload("res://Assets/Characters/Monkey/HandL.png")
-export (Texture) var right_hand_texture: Texture = preload("res://Assets/Characters/Monkey/HandR.png")
-export (Texture) var leg_texture: Texture = preload("res://Assets/Characters/Monkey/Leg.png")
-
 var actor: Actor
 
 onready var scale_x = scale.x
 
+var idle: bool = true
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		$AnimationTree.set("parameters/interact/active", true)
+		if idle:
+			$AnimationTree.set("parameters/idle_interact/active", true)
+		else:
+			$AnimationTree.set("parameters/walk_interact/active", true)
 
 
 func _enter_tree() -> void:
@@ -31,20 +30,11 @@ func _physics_process(delta: float) -> void:
 		scale.x = scale_x
 
 
-func _ready() -> void:
-	$BodyParts/Head/HeadSprite.texture = head_texture
-	$BodyParts/Body/BodySprite.texture = body_texture
-	$BodyParts/LeftLeg/LeftLegSprite.texture = leg_texture
-	$BodyParts/RightLeg/RightLegSprite.texture = leg_texture
-	$BodyParts/LeftHand/LeftHandSprite.texture = left_hand_texture
-	$BodyParts/RightHand/RightHandSprite.texture = right_hand_texture
-
-
 func play_walking_animation() -> void:
-	$AnimationPlayer.play("Walk")
-	$AnimationPlayer.playback_speed = 2
+	$AnimationTree.set("parameters/blend/blend_amount", 0)
+	idle = false
 
 
 func play_idle_animation() -> void:
-	$AnimationPlayer.play("Idle")
-	$AnimationPlayer.playback_speed = 1
+	$AnimationTree.set("parameters/blend/blend_amount", 1)
+	idle = true

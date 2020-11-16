@@ -10,7 +10,7 @@ export (Color) var _green: Color
 export (Color) var _blue: Color
 export (int) var _max_books: int
 onready var _pip_scene: PackedScene = preload("res://Interface/Pip.tscn")
-
+var _last_book
 var _books: Array
 
 
@@ -55,7 +55,22 @@ func add_book_pip(book: Book) -> void:
 	var pip = _pip_scene.instance()
 	$Pips/GridContainer.add_child(pip)
 	pip.modulate = color
+	_last_book = pip
 
 
-func remove_book_pip() -> void:
-	pass
+func remove_last_book_pip() -> void:
+	if _last_book:
+		$Pips/GridContainer.remove_child(_last_book)
+		_last_book.queue_free()
+		_last_book = $Pips/GridContainer.get_child($Pips/GridContainer.get_children().size() - 1)
+		print(_last_book)
+
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	if not body as Player:
+		return
+	if ((body as Player).interactor as Interactor).held_item == null:
+		remove_last_book_pip()
+		((body as Player).interactor as Interactor).held_item = _books.pop_back()
+	if not _books and $AnimationPlayer.is_playing():
+		$AnimationPlayer.play("Unexclaim")

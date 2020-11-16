@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Player.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 48 )
@@ -22,10 +25,10 @@ extents = Vector2( 22, 16 )
 
 [node name="Player" instance=ExtResource( 1 )]
 z_index = 2
-collision_layer = 0
+collision_layer = 16
 collision_mask = 5
 script = ExtResource( 2 )
-movement_speed = 150
+movement_speed = 225
 
 [node name="Collider" parent="." index="1"]
 position = Vector2( 0.211869, 6.98997 )
@@ -35,23 +38,27 @@ shape = SubResource( 1 )
 position = Vector2( 1.5749, -15.6543 )
 highlightMaterial = ExtResource( 4 )
 
-[node name="Left" type="CollisionShape2D" parent="Interactor" index="0"]
-position = Vector2( -40.7835, 1.26133 )
+[node name="Center" type="CollisionShape2D" parent="Interactor" index="0"]
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Left" type="CollisionShape2D" parent="Interactor" index="1"]
+position = Vector2( -24, 0 )
 shape = SubResource( 2 )
 disabled = true
 
-[node name="Right" type="CollisionShape2D" parent="Interactor" index="1"]
-position = Vector2( 40.7835, -1.52588e-05 )
+[node name="Right" type="CollisionShape2D" parent="Interactor" index="2"]
+position = Vector2( 24, 0 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="Down" type="CollisionShape2D" parent="Interactor" index="2"]
-position = Vector2( 4.57764e-05, 65.5899 )
+[node name="Down" type="CollisionShape2D" parent="Interactor" index="3"]
+position = Vector2( 0, 40 )
 shape = SubResource( 4 )
 disabled = true
 
-[node name="Up" type="CollisionShape2D" parent="Interactor" index="3"]
-position = Vector2( -0.420425, -65.1695 )
+[node name="Up" type="CollisionShape2D" parent="Interactor" index="4"]
+position = Vector2( 0, -40 )
 shape = SubResource( 5 )
 disabled = true
 

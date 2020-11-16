@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Objects/Object.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Tiles/DropBoxTile.png" type="Texture" id=2]
@@ -71,10 +71,41 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "Stash"
 
+[sub_resource type="Animation" id=6]
+resource_name = "Unexclaim"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ExclamationMark:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -70 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExclamationMark:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.1, 0.1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 32 )
+
 [node name="DropBoxObject" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-_min_time = 0.1
-_max_time = 0.2
+_min_time = 1.0
+_max_time = 5.0
 _book_scene = ExtResource( 6 )
 _red = Color( 0.941176, 0.188235, 0.188235, 1 )
 _orange = Color( 0.941176, 0.658824, 0.176471, 1 )
@@ -106,6 +137,7 @@ texture = ExtResource( 5 )
 anims/Exclaim = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Stash = SubResource( 4 )
+anims/Unexclaim = SubResource( 6 )
 
 [node name="Pips" type="Node2D" parent="." index="6"]
 z_index = 4
@@ -124,5 +156,28 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+
+[node name="Area2D" type="Area2D" parent="." index="7"]
+collision_layer = 2147483656
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2( 48, 0 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" index="1"]
+position = Vector2( -48, 0 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" index="2"]
+position = Vector2( 0, -48 )
+rotation = 1.57079
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D" index="3"]
+position = Vector2( 0, 48 )
+rotation = 1.57079
+shape = SubResource( 5 )
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

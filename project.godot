@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Objects/Object.gd"
 }, {
+"base": "Area2D",
+"class": "Interactor",
+"language": "GDScript",
+"path": "res://Actors/Interactor.gd"
+}, {
 "base": "Actor",
 "class": "Player",
 "language": "GDScript",
@@ -62,6 +67,7 @@ _global_script_class_icons={
 "DeskObject": "",
 "DropBoxObject": "",
 "GameObject": "",
+"Interactor": "",
 "Player": "",
 "ShelfObject": ""
 }
@@ -129,3 +135,5 @@ move_cart={
 2d_physics/layer_1="Solid"
 2d_physics/layer_2="Interactable"
 2d_physics/layer_3="SolidPlaceable"
+2d_physics/layer_4="DropBox"
+2d_physics/layer_5="Player"

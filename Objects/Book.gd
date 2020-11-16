@@ -13,10 +13,10 @@ func _init() -> void:
 func _ready() -> void:
 	match book_color:
 		BOOK_COLORS.RED:
-			pass
+			modulate = Color.red
 		BOOK_COLORS.ORANGE:
-			pass
+			modulate = Color.orange
 		BOOK_COLORS.GREEN:
-			pass
+			modulate = Color.green
 		BOOK_COLORS.BLUE:
-			pass
+			modulate = Color.blue
