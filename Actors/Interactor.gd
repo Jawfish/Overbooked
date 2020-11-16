@@ -34,8 +34,8 @@ func drop_held_item() -> void:
 	var center = find_node("Center").global_position
 	var vel = held_item.transform.basis_xform(pos - find_node("Center").global_position) * 25
 	var force = vel - held_item.linear_velocity
-	(held_item as RigidBody2D).apply_central_impulse(force)
 	(held_item as RigidBody2D).sleeping = false
+	(held_item as RigidBody2D).apply_central_impulse(force)
 	thrown_item = held_item
 	held_item = null
 
@@ -43,7 +43,7 @@ func drop_held_item() -> void:
 func pick_up_item(item_to_pick_up: Book) -> void:
 	if item_to_pick_up == thrown_item:
 		return
-	target.get_parent().remove_child(target)  # unlink from scene tree
+	Succ.succ(item_to_pick_up, actor)
 	held_item = target
 	target = null
 

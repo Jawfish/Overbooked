@@ -812,7 +812,7 @@ texture = ExtResource( 2 )
 offset = Vector2( -1.26422, 42.262 )
 
 [node name="Body" type="Node2D" parent="BodyParts"]
-position = Vector2( 0, 10.0255 )
+position = Vector2( 0, 17.0593 )
 
 [node name="BodySprite" type="Sprite" parent="BodyParts/Body"]
 position = Vector2( 39.1387, 25.4298 )
@@ -828,8 +828,8 @@ texture = ExtResource( 2 )
 offset = Vector2( -2.58932, 42.0695 )
 
 [node name="Head" type="Node2D" parent="BodyParts"]
-position = Vector2( 0, -105.856 )
-rotation = 0.0416402
+position = Vector2( 0, -93.1721 )
+rotation = 0.0696557
 
 [node name="HeadSprite" type="Sprite" parent="BodyParts/Head"]
 position = Vector2( 98.155, 101.638 )

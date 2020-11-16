@@ -105,7 +105,7 @@ extents = Vector2( 16, 32 )
 [node name="DropBoxObject" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 _min_time = 1.0
-_max_time = 5.0
+_max_time = 10.0
 _book_scene = ExtResource( 6 )
 _red = Color( 0.941176, 0.188235, 0.188235, 1 )
 _orange = Color( 0.941176, 0.658824, 0.176471, 1 )

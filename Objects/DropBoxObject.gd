@@ -9,9 +9,23 @@ export (Color) var _orange: Color
 export (Color) var _green: Color
 export (Color) var _blue: Color
 export (int) var _max_books: int
+
 onready var _pip_scene: PackedScene = preload("res://Interface/Pip.tscn")
+
 var _last_book
 var _books: Array
+var map: TileMap
+
+
+func _ready() -> void:
+	# remove areas that are not on floors
+	for area in $Area2D.get_children():
+		var location_to_check: Vector2 = area.global_position
+		var map_coordinates: Vector2 = map.world_to_map(area.global_position)
+		var tile_index = map.get_cellv(map_coordinates)
+		var tile_name = map.tile_set.tile_get_name(tile_index)
+		if not tile_name == "FloorTile":
+			area.queue_free()
 
 
 func _on_Timer_ready() -> void:
@@ -74,3 +88,4 @@ func _on_Area2D_body_entered(body: Node) -> void:
 		((body as Player).interactor as Interactor).held_item = _books.pop_back()
 	if not _books and $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("Unexclaim")
+	Succ.succ(null, self)

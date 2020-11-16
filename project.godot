@@ -80,6 +80,7 @@ run/main_scene="res://Engine/Main.tscn"
 [autoload]
 
 Globals="*res://Engine/Globals.gd"
+Succ="*res://Engine/Succ.tscn"
 
 [display]
 
@@ -133,7 +134,7 @@ move_cart={
 [layer_names]
 
 2d_physics/layer_1="Solid"
-2d_physics/layer_2="Interactable"
+2d_physics/layer_2="Book"
 2d_physics/layer_3="SolidPlaceable"
 2d_physics/layer_4="DropBox"
 2d_physics/layer_5="Player"

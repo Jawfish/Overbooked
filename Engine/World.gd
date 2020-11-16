@@ -15,32 +15,31 @@ func spawn_objects() -> void:
 	# replace tiles with objects
 	for tile in get_used_cells():
 		var tile_name: String = tile_set.tile_get_name(get_cellv(tile))
-		var scene_to_place: PackedScene
+		var instance: Node2D
 		# what to color-code this object if it is a shelf
-		var modulate_object: String
 		match tile_name:
 			"WallTile":
-				scene_to_place = wall_object
+				instance = wall_object.instance()
 			"DeskTile":
-				scene_to_place = desk_object
+				instance = desk_object.instance()
 			"RedShelfTile":
-				scene_to_place = shelf_object
-				modulate_object = "Red"
+				instance = shelf_object.instance()
+				(instance as ShelfObject).set_color("Red")
 			"OrangeShelfTile":
-				scene_to_place = shelf_object
-				modulate_object = "Orange"
+				instance = shelf_object.instance()
+				(instance as ShelfObject).set_color("Orange")
 			"GreenShelfTile":
-				scene_to_place = shelf_object
-				modulate_object = "Green"
+				instance = shelf_object.instance()
+				(instance as ShelfObject).set_color("Green")
 			"BlueShelfTile":
-				scene_to_place = shelf_object
-				modulate_object = "Blue"
+				instance = shelf_object.instance()
+				(instance as ShelfObject).set_color("Blue")
 			"DropBoxTile":
-				scene_to_place = dropbox_object
+				instance = dropbox_object.instance()
+				instance.map = self
 			"ConveyorTile":
-				scene_to_place = conveyor_object
-		if scene_to_place != null:
-			var instance = scene_to_place.instance() as Node2D
+				instance = conveyor_object.instance()
+		if instance != null:
 			# scenes spawn at the top left of a tile's position, so it  needs to be offset
 			instance.position = map_to_world(tile) + Vector2(32, 32)
 			instance.rotation_degrees = -90.0 if self.is_cell_transposed(tile.x, tile.y) else 0.0
@@ -52,5 +51,3 @@ func spawn_objects() -> void:
 			# remove the placeholder tile
 			set_cellv(tile, -1)
 			# if the scene is a shelf, color-code it accordingly
-			if modulate_object:
-				(instance as ShelfObject).set_color(modulate_object)

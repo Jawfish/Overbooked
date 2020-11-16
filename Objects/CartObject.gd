@@ -3,7 +3,8 @@ class_name CartObject
 
 export (int) var _max_books: int = 3
 export (int) var _push_speed: int = 1
-
+export (float, 0.5, 1.5) var _pitch_min: float
+export (float, 0.5, 1.5) var _pitch_max: float
 var _books: Array = []
 var _attached: bool = false
 
@@ -43,3 +44,12 @@ func attach_to_player() -> void:
 
 func detach_from_player() -> void:
 	_attached = false
+
+
+func _on_BookReceptionArea_body_entered(body: Node) -> void:
+	if body as Book:
+		(body as RigidBody2D).collision_layer = 0
+		(body as RigidBody2D).sleeping = true
+		body.linear_velocity = Vector2.ZERO
+		Succ.succ(body, self)
+		_books.append(body)
