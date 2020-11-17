@@ -9,6 +9,10 @@ func _init() -> void:
 	randomize()
 	book_color = randi() % BOOK_COLORS.size()
 
+func _enter_tree() -> void:
+	# the scale is animated to 0 when picked up, 
+	# so set it back to 1 when placed back in the world
+	scale = Vector2.ONE
 
 func _ready() -> void:
 	match book_color:
