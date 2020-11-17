@@ -1,26 +1,26 @@
 extends RigidBody2D
 class_name Book
-enum BOOK_COLORS { RED, ORANGE, GREEN, BLUE }
 
-var book_color: int
-
+var book_color: String
 
 func _init() -> void:
-	randomize()
-	book_color = randi() % BOOK_COLORS.size()
+	Globals.connect("colorblind_toggled", self, "color_book", [book_color])
 
 func _enter_tree() -> void:
 	# the scale is animated to 0 when picked up, 
 	# so set it back to 1 when placed back in the world
 	scale = Vector2.ONE
 
-func _ready() -> void:
-	match book_color:
-		BOOK_COLORS.RED:
-			modulate = Color.red
-		BOOK_COLORS.ORANGE:
-			modulate = Color.orange
-		BOOK_COLORS.GREEN:
-			modulate = Color.green
-		BOOK_COLORS.BLUE:
-			modulate = Color.blue
+
+# uses a string instead of a Color to make colorblind toggling easier
+func color_book(color: String) -> void:
+	book_color = color
+	match book_color.to_lower():
+		"red":
+			modulate = Globals.red
+		"orange":
+			modulate = Globals.orange
+		"green":
+			modulate = Globals.green
+		"blue":
+			modulate = Globals.blue

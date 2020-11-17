@@ -4,10 +4,6 @@ class_name DropBoxObject
 export (float) var _min_time: float
 export (float) var _max_time: float
 export (PackedScene) var _book_scene: PackedScene
-export (Color) var _red: Color
-export (Color) var _orange: Color
-export (Color) var _green: Color
-export (Color) var _blue: Color
 export (int) var _max_books: int
 
 onready var _pip_scene: PackedScene = preload("res://Interface/Pip.tscn")
@@ -22,8 +18,8 @@ func _ready() -> void:
 	for area in $Area2D.get_children():
 		var location_to_check: Vector2 = area.global_position
 		var map_coordinates: Vector2 = map.world_to_map(area.global_position)
-		var tile_index = map.get_cellv(map_coordinates)
-		var tile_name = map.tile_set.tile_get_name(tile_index)
+		var tile_index: int = map.get_cellv(map_coordinates)
+		var tile_name: String = map.tile_set.tile_get_name(tile_index)
 		if not tile_name == "FloorTile":
 			area.queue_free()
 
@@ -56,19 +52,8 @@ func generate_new_book() -> void:
 
 # add a visual representation of how many books remain in the dropbox
 func add_book_pip(book: Book) -> void:
-	var color: Color
-	match book.book_color:
-		book.BOOK_COLORS.RED:
-			color = _red
-		book.BOOK_COLORS.ORANGE:
-			color = _orange
-		book.BOOK_COLORS.GREEN:
-			color = _green
-		book.BOOK_COLORS.BLUE:
-			color = _blue
 	var pip = _pip_scene.instance()
 	$Pips/GridContainer.add_child(pip)
-	pip.modulate = color
 	_last_book = pip
 
 
@@ -76,16 +61,15 @@ func remove_last_book_pip() -> void:
 	if _last_book:
 		$Pips/GridContainer.remove_child(_last_book)
 		_last_book.queue_free()
-		_last_book = $Pips/GridContainer.get_child($Pips/GridContainer.get_children().size() - 1)
-		print(_last_book)
+		_last_book = $Pips/GridContainer.get_children().pop_back()
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if not body as Player:
 		return
-	if ((body as Player).interactor as Interactor).held_item == null:
+	if ((body as Player).interactor as Interactor).held_item == null and _books:
 		remove_last_book_pip()
 		((body as Player).interactor as Interactor).held_item = _books.pop_back()
+		Succ.succ(null, self)		
 	if not _books and $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("Unexclaim")
-	Succ.succ(null, self)

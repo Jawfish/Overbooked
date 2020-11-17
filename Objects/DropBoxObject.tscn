@@ -71,7 +71,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "Stash"
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Unexclaim"
 length = 0.3
 tracks/0/type = "value"
@@ -99,7 +99,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0.1, 0.1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16, 32 )
 
 [node name="DropBoxObject" instance=ExtResource( 1 )]
@@ -107,11 +107,7 @@ script = ExtResource( 3 )
 _min_time = 1.0
 _max_time = 10.0
 _book_scene = ExtResource( 6 )
-_red = Color( 0.941176, 0.188235, 0.188235, 1 )
-_orange = Color( 0.941176, 0.658824, 0.176471, 1 )
-_green = Color( 0.317647, 0.984314, 0.262745, 1 )
-_blue = Color( 0.172549, 0.733333, 0.929412, 1 )
-_max_books = 8
+_max_books = 9
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -137,21 +133,22 @@ texture = ExtResource( 5 )
 anims/Exclaim = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Stash = SubResource( 4 )
-anims/Unexclaim = SubResource( 6 )
+anims/Unexclaim = SubResource( 5 )
 
 [node name="Pips" type="Node2D" parent="." index="6"]
 z_index = 4
 
 [node name="GridContainer" type="GridContainer" parent="Pips" index="0"]
-margin_left = -31.0
-margin_top = 32.0
-margin_right = 33.0
-margin_bottom = 100.0
+margin_left = -30.0
+margin_top = -31.0
+margin_right = 34.0
+margin_bottom = 103.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_constants/hseparation = 2
-columns = 4
+custom_constants/vseparation = 9
+custom_constants/hseparation = 10
+columns = 3
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -163,21 +160,21 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2( 48, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" index="1"]
 position = Vector2( -48, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" index="2"]
 position = Vector2( 0, -48 )
 rotation = 1.57079
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D" index="3"]
 position = Vector2( 0, 48 )
 rotation = 1.57079
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

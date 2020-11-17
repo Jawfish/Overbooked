@@ -79,7 +79,7 @@ run/main_scene="res://Engine/Main.tscn"
 
 [autoload]
 
-Globals="*res://Engine/Globals.gd"
+Globals="*res://Engine/Globals.tscn"
 Succ="*res://Engine/Succ.tscn"
 
 [display]

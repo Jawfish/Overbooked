@@ -47,7 +47,7 @@ func detach_from_player() -> void:
 
 
 func _on_BookReceptionArea_body_entered(body: Node) -> void:
-	if body as Book:
+	if body as Book and _books.size() < _max_books:
 		(body as RigidBody2D).collision_layer = 0
 		(body as RigidBody2D).sleeping = true
 		body.linear_velocity = Vector2.ZERO

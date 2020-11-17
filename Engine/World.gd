@@ -24,16 +24,16 @@ func spawn_objects() -> void:
 				instance = desk_object.instance()
 			"RedShelfTile":
 				instance = shelf_object.instance()
-				(instance as ShelfObject).set_color("Red")
+				(instance as ShelfObject).color_shelf("Red")
 			"OrangeShelfTile":
 				instance = shelf_object.instance()
-				(instance as ShelfObject).set_color("Orange")
+				(instance as ShelfObject).color_shelf("Orange")
 			"GreenShelfTile":
 				instance = shelf_object.instance()
-				(instance as ShelfObject).set_color("Green")
+				(instance as ShelfObject).color_shelf("Green")
 			"BlueShelfTile":
 				instance = shelf_object.instance()
-				(instance as ShelfObject).set_color("Blue")
+				(instance as ShelfObject).color_shelf("Blue")
 			"DropBoxTile":
 				instance = dropbox_object.instance()
 				instance.map = self

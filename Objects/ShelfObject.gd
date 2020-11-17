@@ -1,23 +1,22 @@
 extends GameObject
 class_name ShelfObject
 
-enum SHELF_COLORS { RED, ORANGE, GREEN, BLUE }
+var shelf_color: String
 
-var shelf_color: int
+func _init() -> void:
+	Globals.connect("colorblind_toggled", self, "color_shelf", [shelf_color])
 
-
-func set_color(color: String) -> void:
-	match color.to_lower():
+	
+# uses a string instead of a Color to make colorblind toggling easier
+func color_shelf(color: String) -> void:
+	shelf_color = color
+	match shelf_color.to_lower():
 		"red":
-			modulate = Color(1.0, 0.5, 0.5, 1.0)
-			shelf_color = SHELF_COLORS.RED
+			modulate = Globals.red
 		"orange":
-			modulate = Color(1.0, 0.8, 0.5, 1.0)
-			shelf_color = SHELF_COLORS.ORANGE
+			modulate = Globals.orange
 		"green":
-			modulate = Color(0.5, 1.0, 0.5, 1.0)
-			shelf_color = SHELF_COLORS.GREEN
+			modulate = Globals.green
 		"blue":
-			modulate = Color(0.5, 0.5, 1.0, 1.0)
-			shelf_color = SHELF_COLORS.BLUE
-	name = color.capitalize() + "ShelfObject"
+			modulate = Globals.blue
+	name = color.capitalize() + "ShelfObject"	
