@@ -31,13 +31,6 @@ func _on_body_exited(body: PhysicsBody2D):
 		target = null
 
 
-func find_target() -> Book:
-	for body in get_overlapping_bodies():
-		if body as Book:
-			return body
-	return null
-
-
 func highlight_object(node: Node2D):
 	if highlighted_object:
 		return
