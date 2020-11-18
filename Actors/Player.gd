@@ -23,7 +23,7 @@ func _physics_process(delta):
 	# emit current player state as a signal so other things can know
 	# these are defined in the parent (Actor) class
 	if direction != Vector2.ZERO:
-		_on_direction_changed(direction)
+#		_on_direction_changed(direction)
 		if not current_state == STATES.MOVING:
 			current_state = STATES.MOVING
 			emit_signal("moving")
@@ -38,16 +38,15 @@ func _physics_process(delta):
 	# uses delta time automatically
 	move_and_slide(movement)
 
-
-func _on_direction_changed(input_dir: Vector2):
-	# update active interactor shapes based on input direction
-	var dirs = {
-		Vector2(-1, 0): $Interactor/Left,
-		Vector2(1, 0): $Interactor/Right,
-		Vector2(0, -1): $Interactor/Up,
-		Vector2(0, 1): $Interactor/Down
-	}
-	for dir in dirs:
-		var active = abs(input_dir.angle_to(dir)) <= deg2rad(45.00001)
-		#print(str(dir) + ": " + str(abs(rad2deg(input_dir.angle_to(dir)))) + " " + str(active))
-		dirs[dir].disabled = ! active
+#func _on_direction_changed(input_dir: Vector2):
+#	# update active interactor shapes based on input direction
+#	var dirs = {
+#		Vector2(-1, 0): $Interactor/Left,
+#		Vector2(1, 0): $Interactor/Right,
+#		Vector2(0, -1): $Interactor/Up,
+#		Vector2(0, 1): $Interactor/Down
+#	}
+#	for dir in dirs:
+#		var active = abs(input_dir.angle_to(dir)) <= deg2rad(45.00001)
+#		#print(str(dir) + ": " + str(abs(rad2deg(input_dir.angle_to(dir)))) + " " + str(active))
+#		dirs[dir].disabled = ! active

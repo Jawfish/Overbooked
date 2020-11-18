@@ -145,6 +145,8 @@ move_cart={
 2d_physics/layer_3="SolidPlaceable"
 2d_physics/layer_4="DropBox"
 2d_physics/layer_5="Player"
+2d_physics/layer_6="Shelves"
+2d_physics/layer_7="Cart"
 
 [rendering]
 
