@@ -21,6 +21,7 @@ movement_speed = 225
 
 [node name="Collider" parent="." index="1"]
 visible = false
+modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0.211869, 6.98997 )
 shape = SubResource( 1 )
 
@@ -28,12 +29,11 @@ shape = SubResource( 1 )
 position = Vector2( 1.5749, -15.6543 )
 collision_mask = 96
 
-[node name="1" type="CollisionShape2D" parent="Interactor" index="0"]
+[node name="Selector" type="CollisionShape2D" parent="Interactor" index="0"]
 modulate = Color( 0.898039, 1, 0, 1 )
 position = Vector2( 8, -37 )
 shape = SubResource( 2 )
 
 [node name="PlayerBookSuccer" parent="." index="3" instance=ExtResource( 4 )]
-visible = false
 
 [editable path="Interactor"]

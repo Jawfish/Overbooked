@@ -8,7 +8,8 @@ export (float) var throw_speed: float
 var _last_direction: Vector2
 
 
-func _input(event):
+# throw book; uses _unhandled_input so as not to interfere with shelving
+func _unhandled_input(event):
 	# this is in here because I'm too lazy to hook it up to update properly when the player changes directions
 	if _last_direction != get_parent().direction and get_parent().direction != Vector2.ZERO:
 		_last_direction = get_parent().direction

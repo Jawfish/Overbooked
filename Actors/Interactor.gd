@@ -6,8 +6,8 @@ export (Color) var highlight: Color
 var target: PhysicsBody2D
 
 
-# interact with target
-func _input(event: InputEvent) -> void:
+# interact with target; uses _unhandled_input so as not to interfere with book tossing
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		pass
 
