@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Engine/Globals.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Music/Locations_SeaVillage_Loop_CompleteTrack.wav" type="AudioStream" id=2]
 
 [node name="Globals" type="Node"]
 script = ExtResource( 1 )
@@ -11,3 +12,7 @@ blue = Color( 0.364706, 0.592157, 0.854902, 1 )
 colorblind_red = Color( 0.952941, 0.301961, 0.866667, 1 )
 colorblind_orange = Color( 0.780392, 0.556863, 0.027451, 1 )
 colorblind_green = Color( 0.188235, 0.454902, 0.286275, 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0

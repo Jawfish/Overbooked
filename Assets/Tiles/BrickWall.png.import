@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/monke.png-7b58fa2655a913baa1b66e06ed646ffb.stex"
+path="res://.import/BrickWall.png-7c635d5e74a655e4a34e76f486726a6f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/monke.png"
-dest_files=[ "res://.import/monke.png-7b58fa2655a913baa1b66e06ed646ffb.stex" ]
+source_file="res://Assets/Tiles/BrickWall.png"
+dest_files=[ "res://.import/BrickWall.png-7c635d5e74a655e4a34e76f486726a6f.stex" ]
 
 [params]
 

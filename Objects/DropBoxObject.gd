@@ -48,6 +48,10 @@ func generate_new_book() -> void:
 	var book: Book = _book_scene.instance()
 	add_book_pip(book)
 	_books.append(book)
+	# make sure Player picks up Book if they are already within the Area2D when new Book is generated
+	for body in $Area2D.get_overlapping_bodies():
+		if body as Player:
+			_on_Area2D_body_entered(body)
 
 
 # add a visual representation of how many books remain in the dropbox
@@ -67,9 +71,9 @@ func remove_last_book_pip() -> void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	if not body as Player:
 		return
-	if ((body as Player).interactor as Interactor).held_item == null and _books:
+	if ((body as Player).succer as PlayerBookSuccer).held_item == null and _books:
 		remove_last_book_pip()
-		((body as Player).interactor as Interactor).held_item = _books.pop_back()
-		Succ.succ(null, self)		
+		((body as Player).succer as PlayerBookSuccer).held_item = _books.pop_back()
+		Succ.succ(null, self)
 	if not _books and $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("Unexclaim")

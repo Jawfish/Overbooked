@@ -22,7 +22,11 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	rotation = 0
 	if _attached and _player:
-		move_and_slide((_player.position - position) * 2)
+		move_and_slide((_player.position - position) * 3)
+	# fix for books not entering cart if scanned while within the BookReceptionArea
+	for body in $BookReceptionArea.get_overlapping_bodies():
+		if body as Book:
+			_on_BookReceptionArea_body_entered(body)
 
 
 func push(direction: Vector2) -> void:
@@ -47,7 +51,7 @@ func detach_from_player() -> void:
 
 
 func _on_BookReceptionArea_body_entered(body: Node) -> void:
-	if body as Book and _books.size() < _max_books:
+	if body as Book and _books.size() < _max_books and (body as Book).book_color != "":
 		(body as RigidBody2D).collision_layer = 0
 		(body as RigidBody2D).sleeping = true
 		body.linear_velocity = Vector2.ZERO

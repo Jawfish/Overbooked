@@ -3,10 +3,11 @@ class_name ShelfObject
 
 var shelf_color: String
 
+
 func _init() -> void:
 	Globals.connect("colorblind_toggled", self, "color_shelf", [shelf_color])
 
-	
+
 # uses a string instead of a Color to make colorblind toggling easier
 func color_shelf(color: String) -> void:
 	shelf_color = color
@@ -19,4 +20,4 @@ func color_shelf(color: String) -> void:
 			modulate = Globals.green
 		"blue":
 			modulate = Globals.blue
-	name = color.capitalize() + "ShelfObject"	
+	name = color.capitalize() + "ShelfObject"

@@ -7,7 +7,9 @@ func succ(succee, succer) -> void:
 		$Tween.interpolate_property(
 			succee, "position", succee.position, succer.position, 0.2, Tween.TRANS_EXPO
 		)
-		$Tween.interpolate_property(succee, "scale", succee.scale, Vector2.ZERO, 0.2, Tween.TRANS_EXPO)
+		$Tween.interpolate_property(
+			succee, "scale", succee.scale, Vector2.ZERO, 0.2, Tween.TRANS_EXPO
+		)
 		$Tween.start()
 		yield($Tween, "tween_completed")
 		if succee:

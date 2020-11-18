@@ -11,3 +11,9 @@ func _physics_process(delta):
 		if rb:
 			var force = (target_vel - rb.linear_velocity) * delta
 			rb.apply_central_impulse(force)
+
+
+func _on_ScanArea_body_entered(body: Node) -> void:
+	if body as Book and (body as Book).book_color == "":
+		(body as Book).select_random_color()
+		$AudioStreamPlayer2D.play()

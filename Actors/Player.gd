@@ -4,8 +4,8 @@ class_name Player
 enum STATES { IDLE, MOVING, INTERACTING }
 
 var current_state: int = STATES.IDLE
-
 onready var interactor: Interactor = $Interactor
+onready var succer: PlayerBookSuccer = $PlayerBookSuccer
 
 
 func _ready() -> void:

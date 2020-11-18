@@ -3,8 +3,10 @@ class_name Book
 
 var book_color: String
 
+
 func _init() -> void:
 	Globals.connect("colorblind_toggled", self, "color_book", [book_color])
+
 
 func _enter_tree() -> void:
 	# the scale is animated to 0 when picked up, 
@@ -24,3 +26,17 @@ func color_book(color: String) -> void:
 			modulate = Globals.green
 		"blue":
 			modulate = Globals.blue
+
+
+func select_random_color() -> void:
+	randomize()
+	var i = randf()
+	if i < 0.25:
+		book_color = "Red"
+	elif i < 0.5:
+		book_color = "Orange"
+	elif i < 0.75:
+		book_color = "Green"
+	elif i < 1:
+		book_color = "Blue"
+	color_book(book_color)

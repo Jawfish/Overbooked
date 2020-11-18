@@ -1,10 +1,10 @@
 extends TileMap
 
-export (PackedScene) var wall_object: PackedScene
 export (PackedScene) var desk_object: PackedScene
 export (PackedScene) var shelf_object: PackedScene
 export (PackedScene) var dropbox_object: PackedScene
 export (PackedScene) var conveyor_object: PackedScene
+export (PackedScene) var scanner_object: PackedScene
 
 
 func _ready() -> void:
@@ -18,8 +18,6 @@ func spawn_objects() -> void:
 		var instance: Node2D
 		# what to color-code this object if it is a shelf
 		match tile_name:
-			"WallTile":
-				instance = wall_object.instance()
 			"DeskTile":
 				instance = desk_object.instance()
 			"RedShelfTile":
@@ -39,6 +37,8 @@ func spawn_objects() -> void:
 				instance.map = self
 			"ConveyorTile":
 				instance = conveyor_object.instance()
+			"ScannerTile":
+				instance = scanner_object.instance()
 		if instance != null:
 			# scenes spawn at the top left of a tile's position, so it  needs to be offset
 			instance.position = map_to_world(tile) + Vector2(32, 32)
