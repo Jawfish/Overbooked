@@ -3,13 +3,8 @@ class_name Interactor
 
 export (Color) var highlight: Color
 
-var actor: Actor
 var target: PhysicsBody2D
 var highlighted_object: Node
-
-
-func _enter_tree() -> void:
-	actor = get_parent()
 
 
 func _on_body_entered(body: PhysicsBody2D):
