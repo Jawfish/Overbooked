@@ -1,5 +1,6 @@
 extends Area2D
 class_name PlayerBookSuccer
+signal succ
 
 var held_item: Book
 var thrown_item: Book
@@ -60,6 +61,8 @@ func pick_up_item(item_to_pick_up: Book) -> void:
 		return
 	Succ.succ(item_to_pick_up, get_parent())
 	held_item = item_to_pick_up
+	yield(Succ.find_node("Tween"), "tween_completed")
+	emit_signal("succ")
 
 
 func _on_PlayerBookSuccer_body_entered(body: Node) -> void:

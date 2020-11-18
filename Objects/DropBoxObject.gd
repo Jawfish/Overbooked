@@ -75,5 +75,6 @@ func _on_Area2D_body_entered(body: Node) -> void:
 		remove_last_book_pip()
 		((body as Player).succer as PlayerBookSuccer).held_item = _books.pop_back()
 		Succ.succ(null, self)
+		((body as Player).find_node("SuccPlayer") as AnimationPlayer).play("Succ")
 	if not _books and $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("Unexclaim")
