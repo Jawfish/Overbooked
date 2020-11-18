@@ -17,7 +17,7 @@ func _ready() -> void:
 	# remove areas that are not on floors
 	for area in $Area2D.get_children():
 		var location_to_check: Vector2 = area.global_position
-		var map_coordinates: Vector2 = map.world_to_map(area.global_position)
+		var map_coordinates: Vector2 = map.world_to_map(location_to_check)
 		var tile_index: int = map.get_cellv(map_coordinates)
 		var tile_name: String = map.tile_set.tile_get_name(tile_index)
 		if not tile_name == "FloorTile":
@@ -46,7 +46,7 @@ func start_random_timer() -> void:
 
 func generate_new_book() -> void:
 	var book: Book = _book_scene.instance()
-	add_book_pip(book)
+	add_book_pip()
 	_books.append(book)
 	# make sure Player picks up Book if they are already within the Area2D when new Book is generated
 	for body in $Area2D.get_overlapping_bodies():
@@ -55,7 +55,7 @@ func generate_new_book() -> void:
 
 
 # add a visual representation of how many books remain in the dropbox
-func add_book_pip(book: Book) -> void:
+func add_book_pip() -> void:
 	var pip = _pip_scene.instance()
 	$Pips/GridContainer.add_child(pip)
 	_last_book = pip

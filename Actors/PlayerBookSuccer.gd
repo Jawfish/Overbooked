@@ -40,7 +40,7 @@ func throw_held_item() -> void:
 	# physics and shit
 	held_item.global_position = pos
 	held_item.rotation = 0
-	var force = _last_direction * throw_speed * 10
+	var force = _last_direction.normalized() * throw_speed * 10
 	(held_item as RigidBody2D).sleeping = false
 	(held_item as RigidBody2D).apply_central_impulse(force)
 
