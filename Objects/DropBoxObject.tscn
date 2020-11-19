@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Objects/Object.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Images/DropBox.png" type="Texture" id=2]
@@ -107,10 +107,26 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16, 32 )
 
+[sub_resource type="Animation" id=9]
+resource_name = "Flash"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ProgressBar:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.976471, 0.172549, 0.172549, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="DropBoxObject" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-_min_time = 1.0
-_max_time = 10.0
+_max_time = 3.0
 _book_scene = ExtResource( 6 )
 _max_books = 9
 
@@ -178,6 +194,9 @@ shape = SubResource( 6 )
 position = Vector2( 0, 48 )
 rotation = 1.57079
 shape = SubResource( 6 )
+
+[node name="ProgressBarAnimation" type="AnimationPlayer" parent="." index="8"]
+anims/Flash = SubResource( 9 )
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

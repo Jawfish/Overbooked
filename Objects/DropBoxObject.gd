@@ -58,6 +58,11 @@ func generate_new_book() -> void:
 func update_progress() -> void:
 	progress.max_value = _max_books
 	progress.value = _books.size()
+	if progress.value == progress.max_value:
+		$ProgressBarAnimation.play("Flash")
+	else:
+		$ProgressBarAnimation.stop()
+		$ProgressBar.modulate = Color.white
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
