@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actors/Actor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Player.gd" type="Script" id=2]
 [ext_resource path="res://Actors/Interactor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/PlayerBookSuccer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Book.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0
@@ -36,14 +37,23 @@ collision_mask = 5
 script = ExtResource( 2 )
 movement_speed = 225
 
-[node name="Collider" parent="." index="1"]
+[node name="ActorBody" parent="." index="0"]
+scale = Vector2( 1, 1 )
+
+[node name="Book" type="Sprite" parent="ActorBody" index="3"]
 visible = false
+position = Vector2( 31.15, 23.6218 )
+rotation = 1.57079
+scale = Vector2( 0.487432, 0.487432 )
+texture = ExtResource( 5 )
+
+[node name="Collider" parent="." index="1"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 0.211869, 6.98997 )
+position = Vector2( -3.79961, 20.2042 )
 shape = SubResource( 1 )
 
 [node name="Interactor" parent="." index="2" instance=ExtResource( 3 )]
-position = Vector2( 1.5749, -15.6543 )
+position = Vector2( -1.4251, -15.6543 )
 collision_mask = 96
 
 [node name="Selector" type="CollisionShape2D" parent="Interactor" index="0"]
@@ -52,6 +62,7 @@ position = Vector2( 8, -37 )
 shape = SubResource( 2 )
 
 [node name="PlayerBookSuccer" parent="." index="3" instance=ExtResource( 4 )]
+position = Vector2( -10.6186, 3.77551 )
 
 [node name="SuccPlayer" type="AnimationPlayer" parent="." index="4"]
 anims/Succ = SubResource( 3 )

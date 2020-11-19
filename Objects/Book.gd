@@ -4,15 +4,12 @@ class_name Book
 var book_color: String
 
 
-func _init() -> void:
-	if not Globals.connect("colorblind_toggled", self, "color_book", [book_color]):
-		push_error("Unable to connect to colorblind toggle")
-
-
 func _enter_tree() -> void:
 	# the scale is animated to 0 when picked up, 
 	# so set it back to 1 when placed back in the world
 	scale = Vector2.ONE
+	if not Globals.connect("colorblind_toggled", self, "color_book", [book_color]):
+		push_error("Unable to connect to colorblind toggle")
 
 
 # uses a string instead of a Color to make colorblind toggling easier

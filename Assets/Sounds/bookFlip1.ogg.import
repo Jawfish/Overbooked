@@ -11,5 +11,5 @@ dest_files=[ "res://.import/bookFlip1.ogg-66f858a130f7f0827d28c98080d591e4.oggst
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

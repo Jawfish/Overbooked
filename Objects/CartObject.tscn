@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Sounds/succ.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Objects/CartObject.gd" type="Script" id=2]
 [ext_resource path="res://Assets/CartImage.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Book.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sounds/bookPlace1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sounds/bookPlace2.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sounds/bookPlace3.ogg" type="AudioStream" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.5
@@ -58,4 +61,13 @@ __meta__ = {
 [node name="TopBookDisplay" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
+
+[node name="BookPlace1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+
+[node name="BookPlace2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="BookPlace3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
 [connection signal="body_entered" from="BookReceptionArea" to="." method="_on_BookReceptionArea_body_entered"]

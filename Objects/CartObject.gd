@@ -51,6 +51,13 @@ func update_book_color() -> void:
 
 
 func get_top_book() -> RigidBody2D:
+	var i = randf()
+	if i < 0.33:
+		$BookPlace1.play()
+	elif i < 0.66:
+		$BookPlace2.play()
+	else:
+		$BookPlace3.play()
 	var book_to_return = _books.pop_back()
 	update_progress_bar_value()
 	return book_to_return

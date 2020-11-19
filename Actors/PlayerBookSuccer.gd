@@ -46,6 +46,7 @@ func throw_held_item() -> void:
 
 	thrown_item = held_item
 	held_item = null
+	get_parent().find_node("Book").visible = false
 
 	# if another item exists in the interactor, pick it up after throwing this one
 	for body in get_overlapping_bodies():
@@ -63,11 +64,14 @@ func pick_up_item(item_to_pick_up: Book) -> void:
 	held_item = item_to_pick_up
 	yield(Succ.find_node("Tween"), "tween_completed")
 	emit_signal("succ")
+	get_parent().find_node("Book").visible = true
 
 
 func _on_PlayerBookSuccer_body_entered(body: Node) -> void:
 	if not held_item:
-		pick_up_item(body)
+		# make it so the player can only pick up unscanned books
+		if body as Book and not body.book_color:
+			pick_up_item(body)
 
 
 func _on_PlayerBookSuccer_body_exited(body: Node) -> void:

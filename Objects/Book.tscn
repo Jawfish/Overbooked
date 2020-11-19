@@ -4,8 +4,8 @@
 [ext_resource path="res://Objects/Book.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 14.0
-height = 10.0
+radius = 28.0166
+height = 11.3347
 
 [node name="Book" type="RigidBody2D"]
 collision_layer = 2
@@ -15,8 +15,8 @@ linear_damp = 2.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.92862, -1.12246 )
 shape = SubResource( 1 )
