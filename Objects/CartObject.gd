@@ -56,6 +56,13 @@ func get_top_book() -> RigidBody2D:
 	return book_to_return
 
 
+func check_top_book_color() -> Color:
+	var c = Color.white
+	if _books:
+		c = _books[_books.size() - 1].modulate
+	return c
+
+
 func update_progress_bar_value() -> void:
 	$TextureProgress.value = _books.size()
 	if $TextureProgress.value == 0:

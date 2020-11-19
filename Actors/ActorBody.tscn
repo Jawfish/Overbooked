@@ -743,46 +743,46 @@ tracks/27/keys = {
 "values": [ 44.9999, -30.0 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Interact"
 
-[sub_resource type="AnimationNodeTimeScale" id=12]
+[sub_resource type="AnimationNodeTimeScale" id=6]
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Interact"
 
-[sub_resource type="AnimationNodeBlend2" id=4]
+[sub_resource type="AnimationNodeBlend2" id=9]
 
-[sub_resource type="AnimationNodeOneShot" id=6]
+[sub_resource type="AnimationNodeOneShot" id=10]
 
-[sub_resource type="AnimationNodeOneShot" id=9]
+[sub_resource type="AnimationNodeOneShot" id=11]
 
-[sub_resource type="AnimationNodeBlendTree" id=11]
+[sub_resource type="AnimationNodeBlendTree" id=12]
 graph_offset = Vector2( -353.5, 52.25 )
-nodes/Idle/node = SubResource( 5 )
+nodes/Idle/node = SubResource( 4 )
 nodes/Idle/position = Vector2( 50, 440 )
-nodes/IdleInteract1/node = SubResource( 7 )
+nodes/IdleInteract1/node = SubResource( 5 )
 nodes/IdleInteract1/position = Vector2( 40, 560 )
-nodes/TimeScale/node = SubResource( 12 )
+nodes/TimeScale/node = SubResource( 6 )
 nodes/TimeScale/position = Vector2( 200, 60 )
-nodes/Walk/node = SubResource( 8 )
+nodes/Walk/node = SubResource( 7 )
 nodes/Walk/position = Vector2( 50, 180 )
-nodes/WalkInteract1/node = SubResource( 10 )
+nodes/WalkInteract1/node = SubResource( 8 )
 nodes/WalkInteract1/position = Vector2( 60, 300 )
-nodes/blend/node = SubResource( 4 )
+nodes/blend/node = SubResource( 9 )
 nodes/blend/position = Vector2( 650, 300 )
-nodes/idle_interact/node = SubResource( 6 )
+nodes/idle_interact/node = SubResource( 10 )
 nodes/idle_interact/position = Vector2( 370, 450 )
 nodes/output/position = Vector2( 950, 220 )
-nodes/walk_interact/node = SubResource( 9 )
+nodes/walk_interact/node = SubResource( 11 )
 nodes/walk_interact/position = Vector2( 360, 170 )
-node_connections = [ "blend", 0, "walk_interact", "blend", 1, "idle_interact", "output", 0, "blend", "idle_interact", 0, "Idle", "idle_interact", 1, "IdleInteract1", "TimeScale", 0, "Walk", "walk_interact", 0, "TimeScale", "walk_interact", 1, "WalkInteract1" ]
+node_connections = [ "blend", 0, "walk_interact", "blend", 1, "idle_interact", "output", 0, "blend", "TimeScale", 0, "Walk", "idle_interact", 0, "Idle", "idle_interact", 1, "IdleInteract1", "walk_interact", 0, "TimeScale", "walk_interact", 1, "WalkInteract1" ]
 
 [node name="ActorBody" type="Node2D"]
 script = ExtResource( 1 )
@@ -799,7 +799,7 @@ anims/Walk = SubResource( 3 )
 
 [node name="LeftHandSprite" type="Sprite" parent="BodyParts/LeftHand"]
 position = Vector2( 139.192, 9.03972 )
-rotation = 0.523598
+rotation = 0.523599
 texture = ExtResource( 4 )
 offset = Vector2( 49.3177, 65.2949 )
 
@@ -812,11 +812,11 @@ texture = ExtResource( 2 )
 offset = Vector2( -1.26422, 42.262 )
 
 [node name="Body" type="Node2D" parent="BodyParts"]
-position = Vector2( 0, 17.0593 )
+position = Vector2( 0, 12.3991 )
 
 [node name="BodySprite" type="Sprite" parent="BodyParts/Body"]
 position = Vector2( 39.1387, 25.4298 )
-rotation = 0.785397
+rotation = 0.785396
 texture = ExtResource( 3 )
 
 [node name="RightLeg" type="Node2D" parent="BodyParts"]
@@ -828,8 +828,8 @@ texture = ExtResource( 2 )
 offset = Vector2( -2.58932, 42.0695 )
 
 [node name="Head" type="Node2D" parent="BodyParts"]
-position = Vector2( 0, -93.1721 )
-rotation = 0.0696557
+position = Vector2( 0, -102.449 )
+rotation = 0.0495912
 
 [node name="HeadSprite" type="Sprite" parent="BodyParts/Head"]
 position = Vector2( 98.155, 101.638 )
@@ -840,12 +840,12 @@ offset = Vector2( -33.8996, -190.949 )
 
 [node name="RightHandSprite" type="Sprite" parent="RightHand"]
 position = Vector2( 66.4566, -1.25122 )
-rotation = 0.523598
+rotation = 0.523599
 texture = ExtResource( 6 )
 offset = Vector2( 46.9349, 87.4871 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 11 )
+tree_root = SubResource( 12 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/TimeScale/scale = 2.0

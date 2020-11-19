@@ -12,20 +12,10 @@ radius = 29.5
 extents = Vector2( 38.5, 37.5 )
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 1, 1, 0.882353 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+bg_color = Color( 1, 1, 1, 1 )
 border_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.0703125, 0.0703125, 0.0703125, 0.784314 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0, 0, 0, 1 )
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [node name="CartObject" type="KinematicBody2D"]
 collision_layer = 4

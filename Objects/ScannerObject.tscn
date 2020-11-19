@@ -1,16 +1,46 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Objects/ConveyorObject.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Tiles/ScannerTile.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/Scanner.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sounds/scan.wav" type="AudioStream" id=3]
 
-[sub_resource type="SegmentShape2D" id=1]
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SegmentShape2D" id=6]
 b = Vector2( 64, 0 )
 
 [node name="ScannerObject" instance=ExtResource( 1 )]
+modulate = Color( 0.917647, 0.109804, 0.109804, 1 )
 
-[node name="Sprite" parent="." index="0"]
-texture = ExtResource( 2 )
+[node name="AnimatedSprite" parent="." index="0"]
+frames = SubResource( 7 )
+frame = 4
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource( 3 )
@@ -22,5 +52,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArea" index="0"]
 position = Vector2( 32, 0 )
 rotation = -3.14159
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 [connection signal="body_entered" from="ScanArea" to="." method="_on_ScanArea_body_entered"]

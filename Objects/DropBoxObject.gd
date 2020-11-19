@@ -6,11 +6,11 @@ export (float) var _max_time: float
 export (PackedScene) var _book_scene: PackedScene
 export (int) var _max_books: int
 
-onready var _pip_scene: PackedScene = preload("res://Interface/Pip.tscn")
-
 var _last_book
 var _books: Array
 var map: TileMap
+
+onready var progress: ProgressBar = $ProgressBar
 
 
 func _ready() -> void:
@@ -22,6 +22,7 @@ func _ready() -> void:
 		var tile_name: String = map.tile_set.tile_get_name(tile_index)
 		if not tile_name == "FloorTile":
 			area.queue_free()
+	update_progress()
 
 
 func _on_Timer_ready() -> void:
@@ -46,35 +47,26 @@ func start_random_timer() -> void:
 
 func generate_new_book() -> void:
 	var book: Book = _book_scene.instance()
-	add_book_pip()
 	_books.append(book)
 	# make sure Player picks up Book if they are already within the Area2D when new Book is generated
 	for body in $Area2D.get_overlapping_bodies():
 		if body as Player:
 			_on_Area2D_body_entered(body)
+	update_progress()
 
 
-# add a visual representation of how many books remain in the dropbox
-func add_book_pip() -> void:
-	var pip = _pip_scene.instance()
-	$Pips/GridContainer.add_child(pip)
-	_last_book = pip
-
-
-func remove_last_book_pip() -> void:
-	if _last_book:
-		$Pips/GridContainer.remove_child(_last_book)
-		_last_book.queue_free()
-		_last_book = $Pips/GridContainer.get_children().pop_back()
+func update_progress() -> void:
+	progress.max_value = _max_books
+	progress.value = _books.size()
 
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if not body as Player:
 		return
 	if ((body as Player).succer as PlayerBookSuccer).held_item == null and _books:
-		remove_last_book_pip()
 		((body as Player).succer as PlayerBookSuccer).held_item = _books.pop_back()
 		Succ.succ(null, self)
 		((body as Player).find_node("SuccPlayer") as AnimationPlayer).play("Succ")
 	if not _books and $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("Unexclaim")
+	update_progress()

@@ -9,9 +9,16 @@ var target: PhysicsBody2D
 # interact with target; uses _unhandled_input so as not to interfere with book tossing
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		# TODO: if cart is within certain range, pop back of cart array
-		# and pass the returned value to the target
-		pass
+		# if cart is close enough and shelf is same color as top book of cart, unload top book
+		if (
+			target
+			and (Globals.player.global_position - Globals.cart.global_position).length() < 100
+		):
+			if (
+				target.shelf_color.to_lower()
+				== Globals.cart._books[Globals.cart._books.size() - 1].book_color.to_lower()
+			):
+				var shelved_book = Globals.cart.get_top_book()
 
 
 func _on_body_entered(body: PhysicsBody2D):
