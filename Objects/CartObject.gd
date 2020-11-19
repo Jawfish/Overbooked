@@ -11,6 +11,12 @@ var _attached: bool = false
 onready var _player: Actor = Globals.player
 
 
+func _ready() -> void:
+	Globals.cart = self
+	$TextureProgress.max_value = _max_books
+	update_progress_bar_value()
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_cart"):
 		if (_player.position - position).length() < 100:
@@ -33,13 +39,32 @@ func push(direction: Vector2) -> void:
 	move_and_collide(direction * _push_speed)
 
 
-func add_book(book: StaticBody2D) -> void:
+func add_book(book: RigidBody2D) -> void:
 	if _books.size() < _max_books:
 		_books.append(book)
+	update_progress_bar_value()
 
 
-func get_top_book() -> StaticBody2D:
-	return _books.pop_back()
+func update_book_color() -> void:
+	if _books.size() > 0:
+		$TopBookDisplay.modulate = _books[_books.size() - 1].modulate
+
+
+func get_top_book() -> RigidBody2D:
+	var book_to_return = _books.pop_back()
+	update_progress_bar_value()
+	return book_to_return
+
+
+func update_progress_bar_value() -> void:
+	$TextureProgress.value = _books.size()
+	if $TextureProgress.value == 0:
+		$TextureProgress.visible = false
+		$TopBookDisplay.visible = false
+	else:
+		$TextureProgress.visible = true
+		$TopBookDisplay.visible = true
+	update_book_color()
 
 
 func attach_to_player() -> void:
@@ -56,4 +81,4 @@ func _on_BookReceptionArea_body_entered(body: Node) -> void:
 		(body as RigidBody2D).sleeping = true
 		body.linear_velocity = Vector2.ZERO
 		Succ.succ(body, self)
-		_books.append(body)
+		add_book(body)

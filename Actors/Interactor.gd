@@ -9,6 +9,8 @@ var target: PhysicsBody2D
 # interact with target; uses _unhandled_input so as not to interfere with book tossing
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
+		# TODO: if cart is within certain range, pop back of cart array
+		# and pass the returned value to the target
 		pass
 
 

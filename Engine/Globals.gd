@@ -12,6 +12,7 @@ export (Color) var colorblind_green: Color
 export (Color) var colorblind_blue: Color
 var colorblind: bool = false
 var player: Player
+var cart: CartObject
 
 
 func _ready() -> void:

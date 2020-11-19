@@ -5,7 +5,8 @@ var book_color: String
 
 
 func _init() -> void:
-	Globals.connect("colorblind_toggled", self, "color_book", [book_color])
+	if not Globals.connect("colorblind_toggled", self, "color_book", [book_color]):
+		push_error("Unable to connect to colorblind toggle")
 
 
 func _enter_tree() -> void:
