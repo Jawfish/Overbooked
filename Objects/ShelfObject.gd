@@ -1,10 +1,10 @@
 extends GameObject
 class_name ShelfObject
 
-var shelf_color: String
+export var shelf_color: String
 
 
-func _init() -> void:
+func _ready() -> void:
 	Globals.connect("colorblind_toggled", self, "color_shelf", [shelf_color])
 
 

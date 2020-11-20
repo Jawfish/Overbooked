@@ -6,7 +6,7 @@ var prev_val: float = 11
 
 
 func _ready() -> void:
-	pass
+	Globals.connect("wrong_shelf", self, "penalty")
 
 
 func _on_LevelTimer_timeout() -> void:
@@ -19,3 +19,14 @@ func _on_ProgressBar_value_changed(value: float) -> void:
 		$AudioStreamPlayer.play()
 		if not $AnimationPlayer.is_playing():
 			$AnimationPlayer.play("Low Time")
+
+func penalty() -> void:
+	var time_left = $MainCanvas/LevelTimer.time_left - 5
+	if time_left > 0:
+		$MainCanvas/LevelTimer.stop()
+		$MainCanvas/LevelTimer.wait_time = time_left
+		$MainCanvas/LevelTimer.start()
+		$AnimationPlayer.play("Penalty")
+	else:
+		get_tree().change_scene_to(game_over)
+		

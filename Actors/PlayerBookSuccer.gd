@@ -32,13 +32,8 @@ func throw_held_item() -> void:
 	map.add_child(held_item)
 	var pos: Vector2
 
-	# cheeky way to get the direction the player is facing by checking which interactor is active
-	for interactor in get_parent().interactor.get_children():
-		if not interactor as Timer and not interactor.disabled:
-			pos = interactor.global_position
-
 	# physics and shit
-	held_item.global_position = pos
+	held_item.global_position = global_position
 	held_item.rotation = 0
 	var force = _last_direction.normalized() * throw_speed * 10
 	(held_item as RigidBody2D).sleeping = false

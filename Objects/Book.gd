@@ -4,7 +4,7 @@ class_name Book
 var book_color: String
 
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	# the scale is animated to 0 when picked up, 
 	# so set it back to 1 when placed back in the world
 	scale = Vector2.ONE
