@@ -8,17 +8,21 @@ func _ready() -> void:
 
 func _on_Start_pressed() -> void:
 	get_tree().change_scene_to(game)
-	(Globals.find_node("Click") as AudioStreamPlayer).play()	
+	if not Globals.mute_sfx:	
+		(Globals.find_node("Click") as AudioStreamPlayer).play()	
 
 		
 func _on_Start_mouse_entered() -> void:
-	(Globals.find_node("Hover") as AudioStreamPlayer).play()
+	if not Globals.mute_sfx:
+		(Globals.find_node("Hover") as AudioStreamPlayer).play()
 
 
 func _on_ColorblindToggle_mouse_entered() -> void:
-	(Globals.find_node("Hover") as AudioStreamPlayer).play()
+	if not Globals.mute_sfx:
+		(Globals.find_node("Hover") as AudioStreamPlayer).play()
 
 
 func _on_ColorblindToggle_pressed() -> void:
 	Globals.toggle_colorblind_mode()
-	(Globals.find_node("Click") as AudioStreamPlayer).play()	
+	if not Globals.mute_sfx:	
+		(Globals.find_node("Click") as AudioStreamPlayer).play()	

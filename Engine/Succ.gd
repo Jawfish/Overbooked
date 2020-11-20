@@ -16,4 +16,5 @@ func succ(succee, succer) -> void:
 			succee.get_parent().remove_child(succee)
 	$Audio.position = succer.position
 	$Audio.pitch_scale = rand_range(0.8, 1.2)
-	$Audio.play()
+	if not Globals.mute_sfx:
+		$Audio.play()

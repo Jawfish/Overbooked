@@ -39,7 +39,7 @@ script = ExtResource( 2 )
 movement_speed = 300
 
 [node name="ActorBody" parent="." index="0"]
-scale = Vector2( 1, 1.06838 )
+scale = Vector2( 1, 1.03715 )
 
 [node name="Book" type="Sprite" parent="ActorBody" index="3"]
 visible = false

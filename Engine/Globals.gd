@@ -16,6 +16,7 @@ var player: Player
 var cart: CartObject
 var player_is_targetting: bool = false
 var score: int = 0
+var mute_sfx: bool = false
 
 func _ready() -> void:
 	$Tween.interpolate_property($AudioStreamPlayer, "volume_db", -50, -15, 3, Tween.TRANS_LINEAR)
@@ -35,3 +36,11 @@ func toggle_colorblind_mode() -> void:
 	blue = colorblind_blue
 	colorblind_blue = b
 	emit_signal("colorblind_toggled")
+
+
+func _on_MuteMusic_toggled(button_pressed: bool) -> void:
+	$AudioStreamPlayer.playing = !button_pressed
+
+
+func _on_MuteSfx_toggled(button_pressed: bool) -> void:
+	mute_sfx = button_pressed

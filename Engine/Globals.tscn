@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Engine/Globals.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Music/Locations_SeaVillage_Loop_CompleteTrack.wav" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Sounds/click3.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sounds/click1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/UI/speaker.svg" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/speaker-off.svg" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/musicOff.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/musicOn.png" type="Texture" id=8]
 
 [node name="Globals" type="Node"]
 script = ExtResource( 1 )
@@ -28,3 +32,45 @@ stream = ExtResource( 3 )
 stream = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MuteSfx" type="TextureButton" parent="CanvasLayer/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -78.0001
+margin_right = 507.0
+margin_bottom = 434.0
+rect_scale = Vector2( 0.9, 0.9 )
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MuteMusic" type="TextureButton" parent="CanvasLayer/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 75.0
+margin_top = -78.0001
+margin_right = 587.0
+margin_bottom = 434.0
+rect_scale = Vector2( 0.9, 0.9 )
+toggle_mode = true
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="toggled" from="CanvasLayer/Control/MuteSfx" to="." method="_on_MuteSfx_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/MuteMusic" to="." method="_on_MuteMusic_toggled"]

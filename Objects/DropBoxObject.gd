@@ -33,7 +33,8 @@ func _on_Timer_timeout() -> void:
 	if _books.size() >= _max_books:
 		return
 	start_random_timer()
-	$AudioStreamPlayer2D.play()
+	if not Globals.mute_sfx:
+		$AudioStreamPlayer2D.play()
 	if _books.size() <= 0:
 		$AnimationPlayer.play("Exclaim")
 	generate_new_book()

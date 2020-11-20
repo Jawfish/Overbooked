@@ -24,7 +24,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				var shelved_book = Globals.cart.get_top_book()
 				Globals.score += 1
 			elif Globals.cart._books.size() > 0 and not target.shelf_color.to_lower()  == Globals.cart._books[Globals.cart._books.size() - 1].book_color.to_lower():
-				(get_parent().find_node("Error") as AudioStreamPlayer2D).play()
+				if not Globals.mute_sfx:
+					(get_parent().find_node("Error") as AudioStreamPlayer2D).play()
 				Globals.emit_signal("wrong_shelf")
 	# lazy gamejam way to update if the player is targetting something so other things can know
 	Globals.player_is_targetting = target != null

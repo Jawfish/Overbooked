@@ -16,4 +16,5 @@ func _physics_process(delta):
 func _on_ScanArea_body_entered(body: Node) -> void:
 	if body as Book and (body as Book).book_color == "":
 		(body as Book).select_random_color()
-		$AudioStreamPlayer2D.play()
+		if not Globals.mute_sfx:
+			$AudioStreamPlayer2D.play()

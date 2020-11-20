@@ -10,9 +10,11 @@ func _ready() -> void:
 func _on_MainMenu_pressed() -> void:
 	Globals.score = 0
 	get_tree().change_scene_to(main_menu)
-	(Globals.find_node("Click") as AudioStreamPlayer).play()
+	if not Globals.mute_sfx:
+		(Globals.find_node("Click") as AudioStreamPlayer).play()
 
 
 
 func _on_MainMenu_mouse_entered() -> void:
-	(Globals.find_node("Hover") as AudioStreamPlayer).play()
+	if not Globals.mute_sfx:
+		(Globals.find_node("Hover") as AudioStreamPlayer).play()
