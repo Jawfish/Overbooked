@@ -3,6 +3,7 @@ class_name ShelfObject
 
 export var shelf_color: String
 
+onready var animator: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	Globals.connect("colorblind_toggled", self, "color_shelf", [shelf_color])

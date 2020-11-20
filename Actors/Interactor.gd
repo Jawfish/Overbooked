@@ -23,6 +23,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			):
 				var shelved_book = Globals.cart.get_top_book()
 				Globals.score += 1
+				target.animator.play("Boop")				
 			elif Globals.cart._books.size() > 0 and not target.shelf_color.to_lower()  == Globals.cart._books[Globals.cart._books.size() - 1].book_color.to_lower():
 				if not Globals.mute_sfx:
 					(get_parent().find_node("Error") as AudioStreamPlayer2D).play()

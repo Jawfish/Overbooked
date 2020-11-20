@@ -95,4 +95,5 @@ func _on_BookReceptionArea_body_entered(body: Node) -> void:
 		(body as RigidBody2D).sleeping = true
 		body.linear_velocity = Vector2.ZERO
 		Succ.succ(body, self)
+		$AnimationPlayer.play("Succ")
 		add_book(body)
