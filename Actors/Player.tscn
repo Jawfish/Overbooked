@@ -35,7 +35,7 @@ z_index = 2
 collision_layer = 16
 collision_mask = 5
 script = ExtResource( 2 )
-movement_speed = 225
+movement_speed = 300
 
 [node name="ActorBody" parent="." index="0"]
 scale = Vector2( 1, 1 )

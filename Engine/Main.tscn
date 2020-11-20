@@ -1,11 +1,57 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Engine/World.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Book.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/CartObject.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Engine/Score.gd" type="Script" id=6]
+[ext_resource path="res://Engine/ProgressBar.gd" type="Script" id=7]
+[ext_resource path="res://Engine/Main.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Sounds/351569__ethraiel__blip.wav" type="AudioStream" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.86, 0.2236, 0.2236, 0.901961 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.784314 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Low Time"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MainCanvas/Control/ProgressBar/Time:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.921569, 0.188235, 0.0196078, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MainCanvas/Control/ProgressBar/Time:custom_fonts/font:size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 16, 24, 16 ]
+}
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="World" parent="." instance=ExtResource( 2 )]
 tile_data = PoolIntArray( 0, 17, 0, 1, 18, 0, 2, 17, 0, 3, 18, 0, 4, 17, 0, 5, 17, 0, 6, 16, 0, 7, 17, 0, 8, 16, 0, 9, 17, 0, 10, 18, 0, 11, 17, 0, 12, 16, 0, 13, 17, 0, 14, 17, 0, 15, 17, 0, 65536, 17, 0, 65537, 1610612750, 0, 65538, 1610612750, 0, 65539, 1610612750, 0, 65540, 1610612750, 0, 65541, 1610612750, 0, 65542, 1610612750, 0, 65543, 1610612750, 0, 65544, 1610612750, 0, 65545, 1610612750, 0, 65546, 1610612750, 0, 65547, 1610612750, 0, 65548, 1610612750, 0, 65549, 1610612750, 0, 65550, 1610612750, 0, 65551, 17, 0, 131072, 16, 0, 131073, 14, 0, 131074, 1610612742, 0, 131075, 1610612742, 0, 131076, 1610612742, 0, 131077, 1610612742, 0, 131078, 1610612750, 0, 131079, 1610612740, 0, 131080, 1610612740, 0, 131081, 1610612740, 0, 131082, 1610612740, 0, 131083, 1610612750, 0, 131084, 1610612750, 0, 131085, 14, 0, 131086, -1610612726, 0, 131087, 16, 0, 196608, 18, 0, 196609, 14, 0, 196610, 1610612750, 0, 196611, 1610612750, 0, 196612, 1610612750, 0, 196613, 1610612750, 0, 196614, 1610612750, 0, 196615, 1610612750, 0, 196616, 1610612750, 0, 196617, 1610612750, 0, 196618, 1610612750, 0, 196619, 1610612750, 0, 196620, 1610612750, 0, 196621, 1610612750, 0, 196622, -1610612726, 0, 196623, 17, 0, 262144, 17, 0, 262145, 14, 0, 262146, 1610612741, 0, 262147, 1610612741, 0, 262148, 1610612741, 0, 262149, 1610612741, 0, 262150, 1610612750, 0, 262151, 1610612744, 0, 262152, 1610612744, 0, 262153, 1610612744, 0, 262154, 1610612744, 0, 262155, 1610612750, 0, 262156, 1610612750, 0, 262157, 1610612750, 0, 262158, -1610612726, 0, 262159, 16, 0, 327680, 18, 0, 327681, 14, 0, 327682, 1610612750, 0, 327683, 1610612750, 0, 327684, 1610612750, 0, 327685, 1610612750, 0, 327686, 1610612750, 0, 327687, 1610612750, 0, 327688, 1610612750, 0, 327689, 1610612750, 0, 327690, 1610612750, 0, 327691, 1610612750, 0, 327692, 1610612750, 0, 327693, 1610612750, 0, 327694, -1610612726, 0, 327695, 17, 0, 393216, 17, 0, 393217, 14, 0, 393218, 14, 0, 393219, 1610612750, 0, 393220, 14, 0, 393221, 14, 0, 393222, 1610612750, 0, 393223, 14, 0, 393224, 1610612750, 0, 393225, 1610612750, 0, 393226, 1610612750, 0, 393227, 1610612750, 0, 393228, 1610612750, 0, 393229, 1610612750, 0, 393230, -1610612726, 0, 393231, 17, 0, 458752, 2, 0, 458753, 14, 0, 458754, 14, 0, 458755, 14, 0, 458756, 14, 0, 458757, 14, 0, 458758, 14, 0, 458759, 14, 0, 458760, 14, 0, 458761, 14, 0, 458762, 14, 0, 458763, 14, 0, 458764, 14, 0, 458765, 1610612750, 0, 458766, 1610612747, 0, 458767, 17, 0, 524288, 17, 0, 524289, 14, 0, 524290, 14, 0, 524291, 14, 0, 524292, 14, 0, 524293, 14, 0, 524294, 14, 0, 524295, 14, 0, 524296, 14, 0, 524297, 14, 0, 524298, 14, 0, 524299, 1610612750, 0, 524300, 1610612750, 0, 524301, 1610612750, 0, 524302, 1610612750, 0, 524303, 17, 0, 589824, 16, 0, 589825, 17, 0, 589826, 16, 0, 589827, 17, 0, 589828, 17, 0, 589829, 17, 0, 589830, 18, 0, 589831, 17, 0, 589832, 17, 0, 589833, 18, 0, 589834, 17, 0, 589835, 16, 0, 589836, 17, 0, 589837, 18, 0, 589838, 17, 0, 589839, 17, 0 )
@@ -18,3 +64,67 @@ position = Vector2( 857.895, 479.42 )
 
 [node name="Book" parent="." instance=ExtResource( 3 )]
 position = Vector2( 687.775, 495.341 )
+
+[node name="MainCanvas" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="MainCanvas"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="MainCanvas/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -254.5
+margin_top = 9.0
+margin_right = 254.5
+margin_bottom = 52.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 60.0
+step = 0.25
+percent_visible = false
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="MainCanvas/Control/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+text = "10 Seconds"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelTimer" type="Timer" parent="MainCanvas"]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Score" type="Label" parent="MainCanvas"]
+margin_left = 72.0
+margin_top = 72.0
+margin_right = 216.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 3 )
+text = "Score: 99"
+uppercase = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Low Time" = SubResource( 5 )
+[connection signal="value_changed" from="MainCanvas/Control/ProgressBar" to="." method="_on_ProgressBar_value_changed"]
+[connection signal="timeout" from="MainCanvas/LevelTimer" to="." method="_on_LevelTimer_timeout"]

@@ -17,7 +17,7 @@ func _unhandled_input(event):
 	elif _last_direction == null:
 		_last_direction = Vector2.RIGHT
 	if event.is_action_pressed("interact"):
-		if held_item:
+		if held_item and not Globals.player_is_targetting:
 			throw_held_item()
 
 

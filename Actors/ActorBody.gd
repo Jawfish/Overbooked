@@ -10,7 +10,7 @@ var idle: bool = true
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		if idle:
-			$AnimationTree.set("parameters/idle_interact/active", true)
+			$AnimationTree.set("parameters/dle_interact/active", true)
 		else:
 			$AnimationTree.set("parameters/walk_interact/active", true)
 

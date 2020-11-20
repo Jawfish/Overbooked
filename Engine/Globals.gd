@@ -13,11 +13,8 @@ export (Color) var colorblind_blue: Color
 var colorblind: bool = false
 var player: Player
 var cart: CartObject
-
-
-func _ready() -> void:
-	if colorblind:
-		toggle_colorblind_mode()
+var player_is_targetting: bool = false
+var score: int = 0
 
 
 func toggle_colorblind_mode() -> void:

@@ -17,14 +17,6 @@ func _ready() -> void:
 	update_progress_bar_value()
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_cart"):
-		if (_player.position - position).length() < 100:
-			attach_to_player()
-	if event.is_action_released("move_cart") and _attached:
-		_attached = false
-
-
 func _physics_process(delta: float) -> void:
 	rotation = 0
 	if _attached and _player:
@@ -33,6 +25,11 @@ func _physics_process(delta: float) -> void:
 	for body in $BookReceptionArea.get_overlapping_bodies():
 		if body as Book:
 			_on_BookReceptionArea_body_entered(body)
+	if Input.is_action_pressed("move_cart"):
+		if (_player.position - position).length() < 100:
+			attach_to_player()
+	if Input.is_action_just_released("move_cart") and _attached:
+		_attached = false
 
 
 func push(direction: Vector2) -> void:

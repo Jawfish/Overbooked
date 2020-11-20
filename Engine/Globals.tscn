@@ -12,7 +12,9 @@ blue = Color( 0.364706, 0.592157, 0.854902, 1 )
 colorblind_red = Color( 0.952941, 0.301961, 0.866667, 1 )
 colorblind_orange = Color( 0.780392, 0.556863, 0.027451, 1 )
 colorblind_green = Color( 0.188235, 0.454902, 0.286275, 1 )
+colorblind_blue = Color( 0.529412, 0.529412, 0.529412, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -10.0
+volume_db = -15.0
+autoplay = true

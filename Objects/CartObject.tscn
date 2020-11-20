@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Sounds/succ.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Objects/CartObject.gd" type="Script" id=2]
@@ -8,17 +8,14 @@
 [ext_resource path="res://Assets/Sounds/bookPlace2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Sounds/bookPlace3.ogg" type="AudioStream" id=7]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 29.5
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 38.5, 37.5 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
 border_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="CartObject" type="KinematicBody2D"]
 collision_layer = 4
@@ -27,18 +24,20 @@ script = ExtResource( 2 )
 _pitch_min = 0.8
 _pitch_max = 1.2
 
+[node name="TopBookDisplay" type="Sprite" parent="."]
+position = Vector2( 3, -14 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 4 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
 
 [node name="BookReceptionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BookReceptionArea"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -50,17 +49,13 @@ margin_left = -32.0
 margin_top = -40.0
 margin_right = 32.0
 margin_bottom = -34.0
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 value = 50.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TopBookDisplay" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
 
 [node name="BookPlace1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )

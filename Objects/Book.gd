@@ -8,7 +8,11 @@ func _enter_tree() -> void:
 	# the scale is animated to 0 when picked up, 
 	# so set it back to 1 when placed back in the world
 	scale = Vector2.ONE
-	if not Globals.connect("colorblind_toggled", self, "color_book", [book_color]):
+	# if not already connected to Globals.colorblind_toggled, connect if possible, push error if not
+	if (
+		not Globals.is_connected("colorblind_toggled", self, "color_book")
+		and not Globals.connect("colorblind_toggled", self, "color_book", [book_color])
+	):
 		push_error("Unable to connect to colorblind toggle")
 
 

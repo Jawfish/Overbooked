@@ -6,9 +6,21 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
-length = 3.0
+length = 0.6
 loop = true
-step = 0.05
+step = 0.33
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.303, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.1 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Interact"
@@ -74,11 +86,11 @@ nodes/walk_interact/position = Vector2( 360, 170 )
 node_connections = [ "blend", 0, "walk_interact", "blend", 1, "idle_interact", "output", 0, "blend", "TimeScale", 0, "Walk", "idle_interact", 0, "Idle", "idle_interact", 1, "IdleInteract1", "walk_interact", 0, "TimeScale", "walk_interact", 1, "WalkInteract1" ]
 
 [node name="ActorBody" type="Node2D"]
+scale = Vector2( 1, 1.023 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.952941, 0.639216, 0.972549, 1 )
-scale = Vector2( 1.01843, 1.03685 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

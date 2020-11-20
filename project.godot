@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Overbooked"
-run/main_scene="res://Engine/Main.tscn"
+run/main_scene="res://Interface/MainMenu.tscn"
 
 [autoload]
 

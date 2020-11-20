@@ -15,10 +15,16 @@ func _unhandled_input(event: InputEvent) -> void:
 			and (Globals.player.global_position - Globals.cart.global_position).length() < 100
 		):
 			if (
-				target.shelf_color.to_lower()
-				== Globals.cart._books[Globals.cart._books.size() - 1].book_color.to_lower()
+				Globals.cart._books.size() > 0
+				and (
+					target.shelf_color.to_lower()
+					== Globals.cart._books[Globals.cart._books.size() - 1].book_color.to_lower()
+				)
 			):
 				var shelved_book = Globals.cart.get_top_book()
+				Globals.score += 1
+	# lazy gamejam way to update if the player is targetting something so other things can know
+	Globals.player_is_targetting = target != null
 
 
 func _on_body_entered(body: PhysicsBody2D):
