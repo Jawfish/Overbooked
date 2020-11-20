@@ -13,7 +13,7 @@ func _ready() -> void:
 		not Globals.is_connected("colorblind_toggled", self, "color_book")
 		and not Globals.connect("colorblind_toggled", self, "color_book", [book_color])
 	):
-		push_error("Unable to connect to colorblind toggle")
+		pass
 
 
 # uses a string instead of a Color to make colorblind toggling easier
