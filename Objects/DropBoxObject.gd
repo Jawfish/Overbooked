@@ -31,10 +31,14 @@ func _on_Timer_ready() -> void:
 
 func _on_Timer_timeout() -> void:
 	if _books.size() >= _max_books:
+		$AnimationPlayer.play("Critical")
+		$FullAudioStreamPlayer.play()
+		Globals.emit_signal("dropbox_full")
 		return
+
 	start_random_timer()
 	if not Globals.mute_sfx:
-		$AudioStreamPlayer2D.play()
+		$NewBookAudioStreamPlayer.play()
 	if _books.size() <= 0:
 		$AnimationPlayer.play("Exclaim")
 	generate_new_book()

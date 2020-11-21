@@ -7,6 +7,7 @@ var prev_val: float = 11
 
 func _ready() -> void:
 	Globals.connect("wrong_shelf", self, "penalty")
+	Globals.connect("dropbox_full", self, "penalty")
 
 
 func _on_LevelTimer_timeout() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Objects/Object.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Images/DropBox.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Sounds/sfxE04.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Images/ExclamationMark.png" type="Texture" id=5]
 [ext_resource path="res://Objects/Book.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sounds/error.ogg" type="AudioStream" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
@@ -16,6 +17,47 @@ bg_color = Color( 1, 1, 1, 1 )
 extents = Vector2( 32, 32 )
 
 [sub_resource type="Animation" id=4]
+resource_name = "Critical"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ExclamationMark:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExclamationMark:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 2.54912 ),
+"update": 0,
+"values": [ Color( 1, 0.960784, 0, 1 ), Color( 0.87451, 0.00784314, 0.00784314, 1 ), Color( 1, 0.960784, 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Idle", 0.6, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("ExclamationMark:position")
@@ -56,7 +98,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("ExclamationMark:position")
@@ -71,9 +113,9 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -64 ), Vector2( 0, -70 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-
 [sub_resource type="Animation" id=7]
+
+[sub_resource type="Animation" id=8]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("ExclamationMark:position")
@@ -100,11 +142,10 @@ tracks/1/keys = {
 "values": [ Vector2( 0.1, 0.1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 16, 32 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "Flash"
+[sub_resource type="Animation" id=10]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -156,44 +197,49 @@ shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="." index="3"]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+[node name="NewBookAudioStreamPlayer" type="AudioStreamPlayer2D" parent="." index="4"]
 stream = ExtResource( 4 )
 
-[node name="ExclamationMark" type="Sprite" parent="." index="5"]
+[node name="FullAudioStreamPlayer" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource( 7 )
+
+[node name="ExclamationMark" type="Sprite" parent="." index="6"]
 modulate = Color( 1, 0.960784, 0, 1 )
+position = Vector2( 0, -69.376 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
-anims/Exclaim = SubResource( 4 )
-anims/Idle = SubResource( 5 )
-anims/Stash = SubResource( 6 )
-anims/Unexclaim = SubResource( 7 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+anims/Critical = SubResource( 4 )
+anims/Exclaim = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Stash = SubResource( 7 )
+anims/Unexclaim = SubResource( 8 )
 
-[node name="Area2D" type="Area2D" parent="." index="7"]
+[node name="Area2D" type="Area2D" parent="." index="8"]
 collision_layer = 2147483656
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2( 48, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" index="1"]
 position = Vector2( -48, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" index="2"]
 position = Vector2( 0, -48 )
 rotation = 1.57079
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D" index="3"]
 position = Vector2( 0, 48 )
 rotation = 1.57079
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
-[node name="ProgressBarAnimation" type="AnimationPlayer" parent="." index="8"]
-anims/Flash = SubResource( 9 )
+[node name="ProgressBarAnimation" type="AnimationPlayer" parent="." index="9"]
+anims/Flash = SubResource( 10 )
 [connection signal="ready" from="Timer" to="." method="_on_Timer_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

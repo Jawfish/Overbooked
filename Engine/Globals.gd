@@ -2,6 +2,7 @@ extends Node
 
 signal colorblind_toggled
 signal wrong_shelf
+signal dropbox_full
 
 export (Color) var red: Color
 export (Color) var orange: Color
