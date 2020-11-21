@@ -12,12 +12,12 @@
 
 [sub_resource type="StyleBoxEmpty" id=17]
 
-[sub_resource type="DynamicFontData" id=12]
+[sub_resource type="DynamicFontData" id=390]
 font_path = "res://Assets/Fonts/PressStart2P-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=18]
 size = 64
-font_data = SubResource( 12 )
+font_data = SubResource( 390 )
 
 [node name="GameOver" type="Control"]
 anchor_left = 0.5

@@ -13,12 +13,12 @@
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="DynamicFontData" id=12]
+[sub_resource type="DynamicFontData" id=390]
 font_path = "res://Assets/Fonts/PressStart2P-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=13]
-size = 96
-font_data = SubResource( 12 )
+size = 80
+font_data = SubResource( 390 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.141176, 0.141176, 0.141176, 1 )
@@ -35,7 +35,7 @@ bg_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 24
-font_data = SubResource( 12 )
+font_data = SubResource( 390 )
 
 [node name="MainMenu" type="Control"]
 anchor_left = 0.5
@@ -57,18 +57,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -240.0
-margin_top = -48.0
-margin_right = 240.0
-margin_bottom = 48.0
+margin_left = -576.0
+margin_top = -164.0
+margin_right = 576.0
+margin_bottom = 132.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Start" type="Button" parent="VBoxContainer"]
-margin_right = 480.0
-margin_bottom = 96.0
+margin_left = 376.0
+margin_right = 776.0
+margin_bottom = 80.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_styles/hover = SubResource( 1 )
@@ -80,6 +81,46 @@ custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_hover = Color( 1, 0.796078, 0, 1 )
 custom_colors/font_color_pressed = Color( 0.745098, 0.647059, 0.188235, 1 )
 text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Button" parent="VBoxContainer"]
+margin_left = 96.0
+margin_top = 84.0
+margin_right = 1056.0
+margin_bottom = 164.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color_hover = Color( 1, 0.796078, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.745098, 0.647059, 0.188235, 1 )
+text = "Instructions"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+margin_left = 296.0
+margin_top = 168.0
+margin_right = 856.0
+margin_bottom = 248.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color_hover = Color( 1, 0.796078, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.745098, 0.647059, 0.188235, 1 )
+text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -119,5 +160,9 @@ position = Vector2( 938.902, 596.222 )
 shelf_color = "Blue"
 [connection signal="mouse_entered" from="VBoxContainer/Start" to="." method="_on_Start_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Instructions" to="." method="_on_Instructions_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Instructions" to="." method="_on_Instructions_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Credits" to="." method="_on_Credits_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="mouse_entered" from="ColorblindToggle" to="." method="_on_ColorblindToggle_mouse_entered"]
 [connection signal="pressed" from="ColorblindToggle" to="." method="_on_ColorblindToggle_pressed"]

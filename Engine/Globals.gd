@@ -17,7 +17,7 @@ var cart: CartObject
 var player_is_targetting: bool = false
 var score: int = 0
 var mute_sfx: bool = false
-
+var main = preload("res://Interface/MainMenu.tscn")
 func _ready() -> void:
 	$Tween.interpolate_property($AudioStreamPlayer, "volume_db", -50, -15, 3, Tween.TRANS_LINEAR)
 	$Tween.start()

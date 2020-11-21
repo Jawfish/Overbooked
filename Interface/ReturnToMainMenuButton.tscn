@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="DynamicFontData" id=12]
+font_path = "res://Assets/Fonts/PressStart2P-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=21]
+size = 96
+font_data = SubResource( 12 )
+
+[node name="MainMenu" type="Button"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -198.0
+margin_bottom = -96.0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
+custom_fonts/font = SubResource( 21 )
+text = "MAIN MENU"
+__meta__ = {
+"_edit_use_anchors_": false
+}

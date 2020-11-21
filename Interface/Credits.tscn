@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Interface/ReturnToMainMenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Interface/Credits.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=390]
+font_path = "res://Assets/Fonts/PressStart2P-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=14]
+size = 64
+font_data = SubResource( 390 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 18
+font_data = SubResource( 390 )
+
+[sub_resource type="DynamicFont" id=15]
+font_data = SubResource( 390 )
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 24.0
+margin_bottom = 24.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 14 )
+text = "CREDITS"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -224.0
+margin_top = -226.0
+margin_right = 224.0
+margin_bottom = -46.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer3"]
+margin_right = 448.0
+margin_bottom = 38.0
+
+[node name="James" type="Label" parent="VBoxContainer3/VBoxContainer"]
+margin_right = 448.0
+margin_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 13 )
+text = "James Fitzgerald"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Github" type="Label" parent="VBoxContainer3/VBoxContainer"]
+margin_top = 22.0
+margin_right = 448.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 15 )
+text = "github.com/jawfish"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer3"]
+margin_top = 58.0
+margin_right = 448.0
+margin_bottom = 96.0
+
+[node name="Alec" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+margin_right = 448.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 13 )
+text = "Alec 'Aloshi' Lofquist"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Github" type="Label" parent="VBoxContainer3/VBoxContainer2"]
+margin_top = 22.0
+margin_right = 448.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 15 )
+text = "github.com/aloshi"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" parent="." instance=ExtResource( 1 )]
+[connection signal="mouse_entered" from="MainMenu" to="." method="_on_MainMenu_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenu" to="." method="_on_MainMenu_mouse_exited"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]
