@@ -12,7 +12,7 @@ func succ(succee, succer) -> void:
 		)
 		$Tween.start()
 		yield($Tween, "tween_completed")
-		if succee:
+		if succee and succee.get_parent():
 			succee.get_parent().remove_child(succee)
 	$Audio.position = succer.position
 	$Audio.pitch_scale = rand_range(0.8, 1.2)
