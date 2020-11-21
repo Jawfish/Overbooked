@@ -1,9 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Interface/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/BubblegumSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Objects/ShelfObject.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Fonts/MainMenu.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -15,28 +13,39 @@
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="DynamicFontData" id=12]
+font_path = "res://Assets/Fonts/PressStart2P-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+size = 96
+font_data = SubResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.141176, 0.141176, 0.141176, 1 )
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 
 [sub_resource type="DynamicFont" id=11]
-size = 32
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
+size = 24
+font_data = SubResource( 12 )
 
 [node name="MainMenu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -320.0
+margin_right = 512.0
+margin_bottom = 320.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
@@ -48,19 +57,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -92.5
-margin_top = -32.0
-margin_right = 92.5
-margin_bottom = 32.0
+margin_left = -240.0
+margin_top = -48.0
+margin_right = 240.0
+margin_bottom = 48.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Start" type="Button" parent="VBoxContainer"]
-margin_left = 8.0
-margin_right = 177.0
-margin_bottom = 112.0
+margin_right = 480.0
+margin_bottom = 96.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_styles/hover = SubResource( 1 )
@@ -68,7 +76,7 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color_hover = Color( 1, 0.796078, 0, 1 )
 custom_colors/font_color_pressed = Color( 0.745098, 0.647059, 0.188235, 1 )
 text = "Start"
@@ -77,17 +85,17 @@ __meta__ = {
 }
 
 [node name="ColorblindToggle" type="Button" parent="."]
-margin_left = 716.0
-margin_top = 488.817
-margin_right = 1009.0
-margin_bottom = 562.817
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 13 )
+margin_left = 683.0
+margin_top = 481.0
+margin_right = 980.0
+margin_bottom = 555.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 14 )
+custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 11 )
-text = "Colorblind Mode"
+text = "Colorblind"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,19 +103,19 @@ __meta__ = {
 [node name="ColorblindExamples" type="Node" parent="."]
 
 [node name="ShelfObject" parent="ColorblindExamples" instance=ExtResource( 3 )]
-position = Vector2( 754.902, 596.222 )
+position = Vector2( 722.902, 596.222 )
 shelf_color = "Red"
 
 [node name="ShelfObject2" parent="ColorblindExamples" instance=ExtResource( 3 )]
-position = Vector2( 826.902, 596.222 )
+position = Vector2( 794.902, 596.222 )
 shelf_color = "Orange"
 
 [node name="ShelfObject3" parent="ColorblindExamples" instance=ExtResource( 3 )]
-position = Vector2( 898.902, 596.222 )
+position = Vector2( 866.902, 596.222 )
 shelf_color = "Green"
 
 [node name="ShelfObject4" parent="ColorblindExamples" instance=ExtResource( 3 )]
-position = Vector2( 970.902, 596.222 )
+position = Vector2( 938.902, 596.222 )
 shelf_color = "Blue"
 [connection signal="mouse_entered" from="VBoxContainer/Start" to="." method="_on_Start_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
