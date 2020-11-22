@@ -1619,7 +1619,7 @@ __meta__ = {
 position = Vector2( 152.319, 122.861 )
 scale = Vector2( 1.24312, 1.20746 )
 frames = SubResource( 110 )
-frame = 62
+frame = 71
 playing = true
 
 [node name="PickupLabel" type="Label" parent="GridContainer/Pickup"]
@@ -1640,7 +1640,7 @@ __meta__ = {
 position = Vector2( 498.964, 128.48 )
 scale = Vector2( 1.13075, 1.13075 )
 frames = SubResource( 271 )
-frame = 155
+frame = 95
 playing = true
 
 [node name="ScanningLabel" type="Label" parent="GridContainer/Scanning"]
@@ -1658,7 +1658,7 @@ __meta__ = {
 [node name="Shelving" type="AnimatedSprite" parent="GridContainer"]
 position = Vector2( 819.333, 122.861 )
 frames = SubResource( 393 )
-frame = 72
+frame = 101
 playing = true
 
 [node name="ShelvingLabel" type="Label" parent="GridContainer/Shelving"]
