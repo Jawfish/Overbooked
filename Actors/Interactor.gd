@@ -22,7 +22,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				)
 			):
 				var shelved_book = Globals.cart.get_top_book()
-				Globals.score += 1
+				# This is actually doing Globals.score += 1. I know that's stupid, but there's only a few hours left in the gamejam.
+				Globals.score = 1 
 				target.animator.play("Boop")				
 			elif Globals.cart._books.size() > 0 and not target.shelf_color.to_lower()  == Globals.cart._books[Globals.cart._books.size() - 1].book_color.to_lower():
 				if not Globals.mute_sfx:

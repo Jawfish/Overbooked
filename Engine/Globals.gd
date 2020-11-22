@@ -3,6 +3,7 @@ extends Node
 signal colorblind_toggled
 signal wrong_shelf
 signal dropbox_full
+signal score_increased
 
 export (Color) var red: Color
 export (Color) var orange: Color
@@ -16,7 +17,7 @@ var colorblind: bool = false
 var player: Player
 var cart: CartObject
 var player_is_targetting: bool = false
-var score: int = 0
+var score: int = 0 setget add_to_score
 var mute_sfx: bool = false
 var main = preload("res://Interface/MainMenu.tscn")
 func _ready() -> void:
@@ -45,3 +46,7 @@ func _on_MuteMusic_toggled(button_pressed: bool) -> void:
 
 func _on_MuteSfx_toggled(button_pressed: bool) -> void:
 	mute_sfx = button_pressed
+
+func add_to_score(amount: int) -> void:
+	score += amount
+	emit_signal("score_increased")

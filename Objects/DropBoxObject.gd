@@ -9,6 +9,7 @@ export (int) var _max_books: int
 var _last_book
 var _books: Array
 var map: TileMap
+var _decrease_timer: float = 0.1
 
 onready var progress: ProgressBar = $ProgressBar
 
@@ -47,7 +48,10 @@ func _on_Timer_timeout() -> void:
 func start_random_timer() -> void:
 	# randomize so it won't be the same every game
 	randomize()
+	_min_time = _min_time - _decrease_timer
+	_max_time = _max_time - _decrease_timer	
 	$Timer.start(rand_range(_min_time, _max_time))
+	print(($Timer as Timer).wait_time)
 
 
 func generate_new_book() -> void:
