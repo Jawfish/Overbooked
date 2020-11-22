@@ -48,8 +48,10 @@ func _on_Timer_timeout() -> void:
 func start_random_timer() -> void:
 	# randomize so it won't be the same every game
 	randomize()
-	_min_time = _min_time - _decrease_timer
-	_max_time = _max_time - _decrease_timer	
+	if _min_time > 1:
+		_min_time = _min_time - _decrease_timer
+	if _max_time > 2:
+		_max_time = _max_time - _decrease_timer	
 	$Timer.start(rand_range(_min_time, _max_time))
 	print(($Timer as Timer).wait_time)
 
